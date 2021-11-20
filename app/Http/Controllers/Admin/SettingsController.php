@@ -17,9 +17,9 @@ class SettingsController extends Controller
     {
         abort_if(Gate::denies('setting_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $settings = Setting::all();
+        $setting = Setting::first();
 
-        return view('admin.settings.index', compact('settings'));
+        return view('admin.settings.edit', compact('setting'));
     }
 
     public function create()
@@ -47,7 +47,7 @@ class SettingsController extends Controller
     {
         $setting->update($request->all());
 
-        return redirect()->route('admin.settings.index');
+        return redirect()->route('admin.settings.edit',$setting->id);
     }
 
     public function show(Setting $setting)

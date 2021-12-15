@@ -16,6 +16,8 @@ class CreateSettingsTable extends Migration
             $table->string('twitter')->nullable();
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
+            $table->string('tik_tok')->nullable();
+            $table->string('snapchat')->nullable();
             $table->integer('experience');
             $table->integer('projects');
             $table->integer('clients');
@@ -27,6 +29,11 @@ class CreateSettingsTable extends Migration
             $table->longText('fix_text');
             $table->longText('decore_text');
             $table->longText('about_us');
+            $table->longText('our_message');
+            $table->longText('our_values');
+            $table->longText('our_vision');
+            $table->longText('our_strategy');
+            $table->longText('chairman_word');
             $table->timestamps();
             $table->softDeletes();
         });

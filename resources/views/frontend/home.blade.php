@@ -67,8 +67,97 @@
                 </div>
             </div>
         </div>
+        
+         <div class="section3-part2 ">
+                <div class="row our-wrapper">
+                <div class="col-md-6 our-message">
+                <div class="our-inner">
+                <h1>رســالتنا</h1>
+                <img class="our-icon"  src="{{asset('frontend/img/new-message.png')}}">
+                </div>
+                <p class="our-p"> <?php echo nl2br($setting->our_message ?? ''); ?></p>
+                </div>
+
+                <div class="col-md-6 our-message">
+                <div class="our-inner">
+                <h1>قيمنـــا</h1>
+                <img class="our-icon"  src="{{asset('frontend/img/value-chain.png')}}">
+                </div>
+                <p class="our-p text-center">
+                    <?php echo nl2br($setting->our_values ?? ''); ?>
+                    </p>
+                </div>
+                <div class="col-md-6 our-message">
+                <div class="our-inner">
+                <h1>رؤيتنــــــا</h1>
+                <img class="our-icon" src="{{asset('frontend/img/visionary.png')}}">
+                </div>
+                <p class="our-p">  <?php echo nl2br($setting->our_vision ?? ''); ?></p>
+                </div>
+                <div class="col-md-6 our-message">
+                <div class="our-inner">
+                <h1>استراتيجيتنـــا</h1>
+                <img class="our-icon" src="{{asset('frontend/img/plan.png') }}">
+                </div>
+                <p class="our-p">  <?php echo nl2br($setting->our_strategy ?? ''); ?></p>
+                </div>
+              
+                </div>
+            </div>
     </div>
     <!-------third-section------->
+
+   
+<!------ extra section------->
+    <div class="container-fluid company-team">
+          <div class="container section3 extra-s3">
+                <div class="row">
+                <div class="col-lg-4 text-center">
+                    @php
+                    if($setting->chairman_img)
+                    $img=$setting->chairman_img->getUrl('thumb');
+                    else
+                    $img='';
+                
+                    @endphp
+                    <img class="s3-img" src="{{  $img }}">    
+                </div>
+                <div class="col-lg-8">
+                    <div class="section3-text-wrap">
+                        <h1>كلمة رئيس مجلس الإدارة</h1>
+                        <p>
+                            <?php echo nl2br($setting->our_vision ?? ''); ?>
+                    </p>  
+                       <!-- <button class="more-btn" onclick="myFunction2()" id="myBtn">اقرأ المزيد</button>-->
+                    </div>      
+                </div>
+                </div>
+            </div>
+         <div class="section4-text-wrapper">
+            <h1 class="s4-title text-center">فريق العمل</h1>
+            <p class="s4-p text-center"><?php echo nl2br($fajrCrews->description ?? ''); ?> </p>
+            </div>
+         
+        <div class="row container">
+            @foreach($fajrCrews->types as $key => $item)
+            <div class="team-members grow">
+                @php
+                    if( $item->job_img)
+                    $img= $item->job_img->getUrl('thumb');
+                    else
+                    $img='';
+                
+                    @endphp
+                <img class="team-member-img" src="{{ $img}}">
+                <h5> <?php echo nl2br($item->type ?? ''); ?></h5>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    </div
+    
+    
+<!------ extra section------->
 
 
     <!-----forth-section--------->
@@ -166,4 +255,186 @@
         </div>
     </div>
     <!-----fifth-section--------->
+       
+<!----- tabs-section--------->
+    <div class="container-fluid policy-section">
+    <div class="section4-text-wrapper">
+            <h1 class="s4-title text-center">المزيد عن الشركة</h1>
+            </div>
+         <div class="container tabs-section">
+        <div class="row">
+            <div class="col-md-3">
+            <div class="tab">
+              <button class="tablinks courses-tab" onclick="openTab(event, 'policy')" id="defaultOpen">
+                  <div class="tab-inner">
+                  السياسات
+                  </div>
+                  </button>
+              <button class="tablinks trainers-tab" onclick="openTab(event, 'organization1')">                  <div class="tab-inner">
+                ادارة الشركة
+                  </div></button>
+              <button class="tablinks trainers-tab" onclick="openTab(event, 'organization2')">                  <div class="tab-inner">
+                  أقسام الشركة
+                  </div></button>
+              <button class="tablinks trainees-tab" onclick="openTab(event, 'tasks')">                  
+                  <div class="tab-inner">
+                  وصف ومهام
+                  </div></button>              
+            </div>
+            </div>
+            
+            <div class="col-md-9 tabs-content-container">
+            <div id="policy" class="tabcontent">
+              <h1 class="tab-title"></h1>
+            <div class="row">
+                @foreach($policies as $key => $policy)
+                    <div class="col-md-3 download-pdf-container">
+                        <div class="download-pdf-info">
+                        <a href="{{ $policy->policy_pdf->getUrl() }}" download>
+                          <img class="download-img" src="{{asset('frontend/img/download-pdf.png') }}">
+                        </a> 
+                        <h6 class="policy-name">  <?php echo nl2br($policy->type ?? ''); ?></h6>
+                        </div>
+                    </div>
+                   @endforeach
+               
+                </div>
+
+                </div>
+
+            <div id="organization1" class="tabcontent">
+              <h1 class="tab-title"></h1>
+                <div class="row">
+                    @foreach($management as $key => $management)
+                   <div class="col-md-6">
+                       <div class="company-department">
+                        <i class="fas fa-angle-down questions-angle"></i>
+                        <?php echo nl2br($management->type ?? ''); ?>
+                        <ul class="tabs-list department-ul">
+                        <li> <?php echo nl2br($management->description ?? ''); ?></li> 
+                      
+                    </ul>
+                    </div>  
+                     
+                </div> 
+                @endforeach
+                   
+              
+            </div>             
+        </div>
+                
+            <div id="organization2" class="tabcontent">
+              <h1 class="tab-title"></h1>
+               <div class="row">
+                   <div class="col-md-6">
+                    @foreach($sections as $key => $section)
+                       <div class="company-department">
+                        <i class="fas fa-angle-down questions-angle"></i>
+                        <?php echo nl2br($section->type ?? ''); ?>
+                        <ul class="tabs-list department-ul">
+                        <li> <?php echo nl2br($section->description ?? ''); ?></li> 
+                   
+                    </ul>
+                    </div> 
+                    @endforeach 
+                             
+                </div> 
+                    
+                </div>
+            </div>
+                </div>             
+
+            <div id="tasks" class="tabcontent">
+              <h1 class="tab-title"></h1>
+
+                <div class="row">
+                    @foreach($descriptions as $key => $description)
+                    <div class="col-md-4 download-pdf-container">
+                        <div class="download-pdf-info">
+                            <a href="{{ $description->pdf->getUrl() }}" download>
+                          <img class="download-img" src="{{asset('frontend/img/download-pdf.png') }}">
+                        </a> 
+                        <h6 class="policy-name"> <?php echo nl2br($description->type ?? ''); ?></h6>
+                        </div>
+                    </div>
+                    @endforeach
+              
+                </div>
+            </div>
+   
+                </div>
+            </div>
+        </div>
+    </div>
+<!----- tabs-section--------->
+<!------ extra section------->
+    <div class="container-fluid our-partners">
+          <div class="container">
+              <div class="section4-text-wrapper">
+            <h1 class="s4-title text-center">شركاؤنا في النجاح</h1>
+            </div>
+                <div class="row partners-wrap">
+                    @foreach($successPartners as $key => $successPartner)
+                    <div class="partner">
+                    <div class="flip-card">
+                      <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                          <h6><?php echo nl2br($successPartner->company_name ?? ''); ?></h6> 
+                        </div>
+                        <div class="flip-card-back">
+                     <img  href="{{ $successPartner->company_img->getUrl() }}">
+
+                        </div>
+                      </div>
+                    </div>  
+                    </div> 
+        
+                 @endforeach
+                </div>
+        </div>
+    </div>
+    
+    
+<!------ extra section-------> 
+<!----contact-us-social------>
+    <div class="container contact-us-extra">
+            <div class="section4-text-wrapper">
+            <h1 class="s4-title text-center">...نسعد بتواصلكم معنا عبر</h1>
+            </div>
+        <div class="socail-media-contact">
+            <div class="social-media">
+                <a href="{{$setting->email}}">               
+                <img class="social-img grow" src="{{asset('frontend/img/gmail.png')}}">
+                </a>
+
+            </div>
+          <div class="social-media">
+                <a href="{{$setting->snapchat}}">               
+                    <img class="social-img grow" src="{{asset('frontend/img/snapchat.png')}}">
+                </a>
+
+            </div>
+          <div class="social-media">
+                 <a  href="{{$setting->tik_tok}}">
+                    <img class="social-img grow" src="{{asset('frontend/img/tiktok.png')}}">
+                </a>
+
+            </div>
+          <div class="social-media">
+                 <a  href="{{$setting->twitter}}">
+                    <img class="social-img grow" src="{{asset('frontend/img/twitter.png')}}">
+                </a>
+
+            </div>
+          <div class="social-media">
+                <a href="{{$setting->instagram}}">
+                    <img class="social-img grow" src="{{asset('frontend/img/instagram.png')}}">
+                </a>
+            </div>
+        </div>
+    
+    
+    </div>
+<!----contact-us-social------> 
+    
 @endsection

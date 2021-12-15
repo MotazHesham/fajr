@@ -182,6 +182,154 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 44,
+                'title' => 'fajr_detail_access',
+            ],
+            [
+                'id'    => 45,
+                'title' => 'policy_create',
+            ],
+            [
+                'id'    => 46,
+                'title' => 'policy_edit',
+            ],
+            [
+                'id'    => 47,
+                'title' => 'policy_show',
+            ],
+            [
+                'id'    => 48,
+                'title' => 'policy_delete',
+            ],
+            [
+                'id'    => 49,
+                'title' => 'policy_access',
+            ],
+            [
+                'id'    => 50,
+                'title' => 'management_create',
+            ],
+            [
+                'id'    => 51,
+                'title' => 'management_edit',
+            ],
+            [
+                'id'    => 52,
+                'title' => 'management_show',
+            ],
+            [
+                'id'    => 53,
+                'title' => 'management_delete',
+            ],
+            [
+                'id'    => 54,
+                'title' => 'management_access',
+            ],
+            [
+                'id'    => 55,
+                'title' => 'section_create',
+            ],
+            [
+                'id'    => 56,
+                'title' => 'section_edit',
+            ],
+            [
+                'id'    => 57,
+                'title' => 'section_show',
+            ],
+            [
+                'id'    => 58,
+                'title' => 'section_delete',
+            ],
+            [
+                'id'    => 59,
+                'title' => 'section_access',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'description_create',
+            ],
+            [
+                'id'    => 61,
+                'title' => 'description_edit',
+            ],
+            [
+                'id'    => 62,
+                'title' => 'description_show',
+            ],
+            [
+                'id'    => 63,
+                'title' => 'description_delete',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'description_access',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'success_partner_create',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'success_partner_edit',
+            ],
+            [
+                'id'    => 67,
+                'title' => 'success_partner_show',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'success_partner_delete',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'success_partner_access',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'crew_access',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'crew_type_create',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'crew_type_edit',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'crew_type_show',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'crew_type_delete',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'crew_type_access',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'fajr_crew_create',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'fajr_crew_edit',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'fajr_crew_show',
+            ],
+            [
+                'id'    => 79,
+                'title' => 'fajr_crew_delete',
+            ],
+            [
+                'id'    => 80,
+                'title' => 'fajr_crew_access',
+            ],
+            [
+                'id'    => 81,
                 'title' => 'profile_password_edit',
             ],
         ];

@@ -299,7 +299,7 @@ a.more-btn {
     color: #fff;
     cursor: pointer;
 }
-a.more-btn:hover, .news-inner a.more-btn:hover{
+a.more-btn:hover, .news-inner a.more-btn:hover, .more-btn:hover{
     background-color: #b56e54;
     color: #fff;
 }
@@ -576,6 +576,323 @@ width: -webkit-calc(100% - 35px);
 .credits a:hover {
     color: #b56e54;
 }
+
+
+
+
+
+img.our-icon {
+    max-width: 90px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.our-inner {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+p.our-p {
+    text-align: justify;
+    margin-top: 15px;
+    padding: 0px 30px;
+}
+.our-inner h1 {
+    border-bottom: 6px solid #b56e54;
+    padding-bottom: 20px;
+    position: relative;
+    border-radius: 5px;
+}
+.our-inner h1:after {
+    position: absolute;
+    content: '';
+    background: url(../img/logo22.png);
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    right: 50%;
+    margin-right: -9px;
+    bottom: -15px;
+    z-index: 9999;
+}
+ul.our-values-ul {
+    font-size: 22px;
+    list-style-type: disc;
+}
+.row.our-wrapper {
+    background-color: rgb(243, 243, 243);
+    padding: 50px 0px;
+}
+
+
+.company-team {
+    padding: 50px 0px;
+/*    background-color: #f3f3f3;*/
+    margin-top: 50px;
+}
+.team-members {
+    width: 18% !important;
+    border-radius: 20px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    background-color: transparent;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+img.team-member-img {
+    width: 100%;
+    border-radius: 50%;
+    max-width: 120px;
+    margin-bottom: 15px;
+}
+.company-team .row.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px;
+}
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
+.section3.extra-s3 {
+    padding: 0px 50px !important;
+    padding-bottom: 70px !important;
+}
+#more {display: none;}
+button.more-btn {
+    font-size: 20px;
+    background-color: #444343;
+    padding: 10px 25px;
+    color: #fff;
+    cursor: pointer;
+    border:0;
+    transition:all 0.5s ease;
+}
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flip-card-front {
+/*    background-color: #5a5a5a;*/
+    color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain !important;
+/*
+    background: linear-gradient(
+    180deg, rgba(243,243,243,1) 0%, rgb(140 78 55) 100%);
+*/
+    border-radius: 5px;
+    background-image: linear-gradient(rgb(255 255 255 / 0%), rgb(68 68 68)), url(../img/bg9.png);
+    padding: 10px;
+
+}
+.flip-card-front h6 {
+    font-weight: bold;
+    color: #fff;
+}
+.flip-card-back {
+/*
+background-color: #444444;
+  color: white;
+*/
+  transform: rotateY(180deg);
+    border-radius: 5px;
+}
+.our-partners {
+    padding: 50px 0px;
+}
+.flip-card-back img {
+    width: 100%;
+    height: 100%;
+}
+.partner {
+    width: 20% !important;
+}
+.policy-section {
+    padding: 60px 0px;
+    background-color: #f3f3f3;
+}
+img.download-img {
+    width: 100%;
+    max-width: 115px;
+    margin-bottom: 10px;
+}
+.download-pdf-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.download-pdf-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.policy-name {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+.tab {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    text-align: center;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+    color: #b56e54;
+  padding: 15px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+    font-weight: bold;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    color: #fff;
+    background-color: #444444;
+    border-radius: 4px;
+}
+
+/* Style the tab content */
+.tabcontent {
+  padding: 0px 12px;
+  border: 0;
+  width: 100%;
+  border-left: none;
+  height: auto;
+}
+
+.tabs-content-container {
+    margin-top: 40px !important;
+}
+
+.tab-inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.sector-name {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+}
+.sector-name img {
+    width: 115px;
+    margin-bottom: 15px;
+}
+ul.tabs-list {
+    list-style-type: disc;
+    padding-left: 0;
+}
+.company-department {
+    background-color: #444444;
+    border-radius: 10px;
+    text-align: right;
+    min-height: 54px;
+    padding: 10px 20px;
+    margin-bottom: 14px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+ul.tabs-list.department-ul {
+    display: none;
+font-size: 15px;
+    margin-top: 10px;
+    padding-right: 20px;
+}
+#tasks .download-pdf-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.social-media {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+}
+.socail-media-contact {
+    display: flex;
+}
+.contact-us-extra {
+    padding: 25px 0px 50px;
+}
+.social-media a {
+    color: #000;
+    font-family: monospace;
+    font-size: 14px;
+    text-align: center;
+}
+.social-media a:hover {
+    color: #b56e54;
+}
+img.social-img {
+    width: 100%;
+    max-width: 80px;
+    margin-bottom: 20px;
+}
+
 /*************************************Responsive***********************************/
 @media (max-width:1450px){
 .section3-text-wrap h1, h1.s4-title.text-center {
@@ -682,7 +999,30 @@ ul.main-menu.menu-desktop {
 .col-4.main-header-left {
     width: 55%;
 }
-
+.team-members {
+    width: 30% !important;
+    margin-bottom: 25px;
+}
+.company-team .row.container {
+    justify-content: space-evenly;
+    }
+.partner {
+    width: 30% !important;
+    margin-bottom: 25px;
+}
+ .row.partners-wrap {
+    display: flex;
+    justify-content: center;
+}
+.social-media {
+    width: 30% !important;
+    margin-bottom: 35px;
+}
+.socail-media-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 }
 
 @media (max-width:768px){
@@ -720,8 +1060,19 @@ ul.main-menu.menu-desktop {
 }
 .companies {
     padding: 0px !important;
-    padding-bottom: 20px;
+    padding-bottom: 20px !important;
     }
+    
+.our-message {
+    margin-bottom: 25px;
+}
+.download-pdf-container {
+    width: 50% !important;
+}
+.company-sectors {
+    margin: 20px 0px !important;
+    width: 100% !important;
+}
 }
 
 @media (max-width:600px){
@@ -749,6 +1100,17 @@ ul.main-menu.menu-desktop {
 }
 .owl-one button.owl-next {
     left: 5px;
+}
+.team-members {
+    width: 100% !important;
+    max-width: 200px !important;
+}
+.company-team {
+    margin-top: 0px;
+}
+.partner {
+    width: 100% !important;
+    max-width: 200px !important;
 }
 /*
 ul.main-menu-mobile {
@@ -806,6 +1168,24 @@ a.main-header-number {
 img.logo {
     max-width: 100px;
     }
+p.our-p {
+    padding: 0px 15px;
+}
+.section3.extra-s3 {
+    padding: 50px 0px !important;
+}
+.download-pdf-container {
+    width: 100% !important;
+    margin-bottom: 40px;
+}
+.social-media {
+    width: 100% !important;
+}
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 175px;
+}
 }
 
 

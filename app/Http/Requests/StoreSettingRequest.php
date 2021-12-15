@@ -41,6 +41,14 @@ class StoreSettingRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'tik_tok' => [
+                'string',
+                'nullable',
+            ],
+            'snapchat' => [
+                'string',
+                'nullable',
+            ],
             'experience' => [
                 'required',
                 'integer',
@@ -84,6 +92,21 @@ class StoreSettingRequest extends FormRequest
                 'required',
             ],
             'about_us' => [
+                'required',
+            ],
+            'our_message' => [
+                'required',
+            ],
+            'our_values' => [
+                'required',
+            ],
+            'our_vision' => [
+                'required',
+            ],
+            'our_strategy' => [
+                'required',
+            ],
+            'chairman_word' => [
                 'required',
             ],
         ];

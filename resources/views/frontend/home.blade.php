@@ -382,8 +382,7 @@
                           <h6><?php echo nl2br($successPartner->company_name ?? ''); ?></h6> 
                         </div>
                         <div class="flip-card-back">
-                     <img  href="{{ $successPartner->company_img->getUrl() }}">
-
+                            <img src="{{ $successPartner->company_img->getUrl('thumb') }}">
                         </div>
                       </div>
                     </div>  
@@ -403,9 +402,9 @@
             </div>
         <div class="socail-media-contact">
             <div class="social-media">
-                <a href="{{$setting->email}}">               
-                <img class="social-img grow" src="{{asset('frontend/img/gmail.png')}}">
-                </a>
+                <a href="mailto:{{$setting->email}}">               
+                    <img class="social-img grow" src="{{asset('frontend/img/gmail.png')}}">
+                    </a>
 
             </div>
           <div class="social-media">

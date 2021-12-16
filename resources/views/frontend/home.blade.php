@@ -115,7 +115,7 @@
                 <div class="col-lg-4 text-center">
                     @php
                     if($setting->chairman_img)
-                    $img=$setting->chairman_img->getUrl('thumb');
+                    $img=$setting->chairman_img->getUrl('preview');
                     else
                     $img='';
                 
@@ -126,7 +126,7 @@
                     <div class="section3-text-wrap">
                         <h1>كلمة رئيس مجلس الإدارة</h1>
                         <p>
-                            <?php echo nl2br($setting->our_vision ?? ''); ?>
+                            <?php echo nl2br($setting->chairman_word ?? ''); ?>
                     </p>  
                        <!-- <button class="more-btn" onclick="myFunction2()" id="myBtn">اقرأ المزيد</button>-->
                     </div>      
@@ -143,7 +143,7 @@
             <div class="team-members grow">
                 @php
                     if( $item->job_img)
-                    $img= $item->job_img->getUrl('thumb');
+                    $img= $item->job_img->getUrl('preview');
                     else
                     $img='';
                 
@@ -308,10 +308,10 @@
                     @foreach($management as $key => $management)
                    <div class="col-md-6">
                        <div class="company-department">
-                        <i class="fas fa-angle-down questions-angle"></i>
+                        <i class="fas fa-angle-down "></i>
                         <?php echo nl2br($management->type ?? ''); ?>
                         <ul class="tabs-list department-ul">
-                        <li> <?php echo nl2br($management->description ?? ''); ?></li> 
+                        <p> <?php echo nl2br($management->description ?? ''); ?></p> 
                       
                     </ul>
                     </div>  
@@ -326,22 +326,23 @@
             <div id="organization2" class="tabcontent">
               <h1 class="tab-title"></h1>
                <div class="row">
-                   <div class="col-md-6">
+                 
                     @foreach($sections as $key => $section)
+                      <div class="col-md-6">
                        <div class="company-department">
-                        <i class="fas fa-angle-down questions-angle"></i>
+                        <i class="fas fa-angle-down "></i>
                         <?php echo nl2br($section->type ?? ''); ?>
                         <ul class="tabs-list department-ul">
-                        <li> <?php echo nl2br($section->description ?? ''); ?></li> 
+                        <p> <?php echo nl2br($section->description ?? ''); ?></p> 
                    
                     </ul>
                     </div> 
+                      </div> 
                     @endforeach 
                              
-                </div> 
+              
                     
                 </div>
-            </div>
                 </div>             
 
             <div id="tasks" class="tabcontent">
@@ -382,7 +383,8 @@
                           <h6><?php echo nl2br($successPartner->company_name ?? ''); ?></h6> 
                         </div>
                         <div class="flip-card-back">
-                            <img src="{{ $successPartner->company_img->getUrl('thumb') }}">
+                     <img src="{{ $successPartner->company_img->getUrl('preview') }}">
+
                         </div>
                       </div>
                     </div>  
@@ -403,8 +405,8 @@
         <div class="socail-media-contact">
             <div class="social-media">
                 <a href="mailto:{{$setting->email}}">               
-                    <img class="social-img grow" src="{{asset('frontend/img/gmail.png')}}">
-                    </a>
+                <img class="social-img grow" src="{{asset('frontend/img/gmail.png')}}">
+                </a>
 
             </div>
           <div class="social-media">
@@ -437,3 +439,4 @@
 <!----contact-us-social------> 
     
 @endsection
+

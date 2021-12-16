@@ -67,10 +67,10 @@
                             <i class="fas fa-bars top-bar-icon hamburger-menu"></i>
                             <ul class="main-menu-mobile">
                                 <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                                <li><a href="#">خدماتنا</a></li>
-                                <li><a href="#">مشروعاتنا</a></li>
-                                <li><a href="#">أخبارنا</a></li>
-                                <li><a href="#">اتصل بنا</a></li>
+                                <li><a href="#services">خدماتنا</a></li>
+                                <li><a href="#projects">مشروعاتنا</a></li>
+                                <li><a href="#our-news">أخبارنا</a></li>
+                                <li><a href="#contact-us-section">اتصل بنا</a></li>
                             </ul>
                         </div>
                         <a href="{{ $setting->instagram ?? ''}}"><i class="fab fa-instagram top-bar-icon"></i></a>
@@ -90,10 +90,10 @@
                                     src="{{ asset('frontend/img/logo.jpg')}}"></a></div>
                         <ul class="main-menu menu-desktop">
                             <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                            <li><a href="#">خدماتنا</a></li>
-                            <li><a href="#">مشروعاتنا</a></li>
-                            <li><a href="#">أخبارنا</a></li>
-                            <li><a href="#">اتصل بنا</a></li>
+                            <li><a href="#services">خدماتنا</a></li>
+                            <li><a href="#projects">مشروعاتنا</a></li>
+                            <li><a href="#our-news">أخبارنا</a></li>
+                            <li><a href="#contact-us-section">اتصل بنا</a></li>
                         </ul>
                     </div>
                     <div class="col-4 main-header-left">
@@ -106,11 +106,11 @@
             </div>
             <div class="row menu-tablet">
                 <ul class="main-menu">
-                    <li><a href="#">الرئيسية</a></li>
-                    <li><a href="#">خدماتنا</a></li>
-                    <li><a href="#">مشروعاتنا</a></li>
-                    <li><a href="#">أخبارنا</a></li>
-                    <li><a href="#">اتصل بنا</a></li>
+                    <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
+                     <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#projects">مشروعاتنا</a></li>
+                    <li><a href="#our-news">أخبارنا</a></li>
+                    <li><a href="#contact-us-section">اتصل بنا</a></li>
                 </ul>
             </div>
         </header>
@@ -145,10 +145,10 @@
                         <h4 class="footer-title">روابط تهمك</h4>
                         <ul class="footer-list">
                             <li><a href="{{ route('frontend.home')}}">الرئيسية</a></li>
-                            <li><a href="#">من نحن</a></li>
-                            <li><a href="#">تواصل معنا</a></li>
-                            <li><a href="#">مشاريعنا</a></li>
-                            <li><a href="#">أخبارنا</a></li>
+                            <li><a href="#who-are-we">من نحن</a></li>
+                            <li><a href="#contact-us-section">تواصل معنا</a></li>
+                            <li><a href="#projects">مشاريعنا</a></li>
+                            <li><a href="#our-news">أخبارنا</a></li>
                         </ul>
                     </div>
                     <div id="contact-us" class="col-lg-4 footer-div">
@@ -302,6 +302,25 @@
             });
         });
     </script>
+    <script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
 </body>
 
 </html>
+

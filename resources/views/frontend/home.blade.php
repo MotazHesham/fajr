@@ -115,7 +115,7 @@
                 <div class="col-lg-4 text-center">
                     @php
                     if($setting->chairman_img)
-                    $img=$setting->chairman_img->getUrl('preview');
+                    $img=$setting->chairman_img->getUrl('preview2');
                     else
                     $img='';
                 
@@ -128,7 +128,7 @@
                         <p>
                             <?php echo nl2br($setting->chairman_word ?? ''); ?>
                     </p>  
-                       <!-- <button class="more-btn" onclick="myFunction2()" id="myBtn">اقرأ المزيد</button>-->
+                       <!-- <button class="more-btn" onclick="myFunction2()" id="myBtn">اقرأ المزيد</butt-->
                     </div>      
                 </div>
                 </div>
@@ -383,7 +383,7 @@
                           <h6><?php echo nl2br($successPartner->company_name ?? ''); ?></h6> 
                         </div>
                         <div class="flip-card-back">
-                     <img src="{{ $successPartner->company_img->getUrl('preview') }}">
+                     <img src="{{ $successPartner->company_img->getUrl('preview2') }}">
 
                         </div>
                       </div>
@@ -398,7 +398,7 @@
     
 <!------ extra section-------> 
 <!----contact-us-social------>
-    <div class="container contact-us-extra">
+    <div class="container contact-us-extra" id="contact-us-section">
             <div class="section4-text-wrapper">
             <h1 class="s4-title text-center">...نسعد بتواصلكم معنا عبر</h1>
             </div>

@@ -178,6 +178,9 @@
                     </div>
                 </div> 
             @endforeach
+               <div>
+                {!! $projects->links() !!}
+            </div>
         </div>
         <div class="container-fluid projects-statics">
             <div class="container row projects-statics-inner">

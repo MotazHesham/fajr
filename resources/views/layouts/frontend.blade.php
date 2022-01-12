@@ -93,13 +93,14 @@
                             <li><a href="#services">خدماتنا</a></li>
                             <li><a href="#projects">مشروعاتنا</a></li>
                             <li><a href="#our-news">أخبارنا</a></li>
-                            <li><a href="#contact-us-section">اتصل بنا</a></li>
+                            <li><a href="#contact-us-section">اتصل بنا</a></li
+                        
                         </ul>
                     </div>
                     <div class="col-4 main-header-left">
                         <div>
                             <a class="main-header-number" href="tel:{{$setting->phone ?? ''}}">{{$setting->phone ?? ''}}</a>
-                            <img style="width: 50px;" src="{{ asset('frontend/img/Image%202.png')}}">
+                            <a href="https://wa.link/p9p8hy" target="_blank"><img style="width: 50px;" src="{{ asset('frontend/img/Image%202.png')}}"></a>
                         </div>
                     </div>
                 </div>
@@ -235,7 +236,7 @@
                 "ctaText": "تواصل معنا",
                 "borderRadius": "25",
                 "autoShow": false,
-                "phoneNumber": "+9665487122"
+                "phoneNumber": "+966 50 811 6660"
             }
         };
         s.onload = function() {
@@ -323,4 +324,3 @@ document.getElementById("defaultOpen").click();
 </body>
 
 </html>
-

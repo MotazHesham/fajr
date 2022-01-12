@@ -21,7 +21,7 @@ class HomeController
     {
         $setting = Setting::first();
         $news = News::orderBy('created_at','desc')->get()->take(3);
-        $projects = Project::orderBy('created_at','desc')->get()->take(3);
+        $projects = Project::orderBy('created_at','desc')->paginate(6);
         $fajrCrews = FajrCrew::with(['types'])->first();
         $policies = Policy::with(['media'])->get()->take(4);
         $sections = Section::get()->take(10);

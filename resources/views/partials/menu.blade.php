@@ -67,6 +67,58 @@
                 </ul>
             </li>
         @endcan
+        @can('slider_access')
+        <li class="c-sidebar-nav-item">
+            <a href="{{ route("admin.sliders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/sliders") || request()->is("admin/sliders/*") ? "c-active" : "" }}">
+                <i class="fa-fw far fa-images c-sidebar-nav-icon">
+
+                </i>
+                {{ trans('cruds.slider.title') }}
+            </a>
+        </li>
+    @endcan
+        @can('setting_access')
+        <li class="c-sidebar-nav-item">
+            <a href="{{ route("admin.settings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
+                <i class="fa-fw fas fa-cog c-sidebar-nav-icon">
+
+                </i>
+                {{ trans('cruds.setting.title') }}
+            </a>
+        </li>
+    @endcan
+    @can('crew_access')
+    <li class="c-sidebar-nav-dropdown {{ request()->is("admin/crew-types*") ? "c-show" : "" }} {{ request()->is("admin/fajr-crews*") ? "c-show" : "" }}">
+        <a class="c-sidebar-nav-dropdown-toggle" href="#">
+            <i class="fa-fw fas fa-users c-sidebar-nav-icon">
+
+            </i>
+            {{ trans('cruds.crew.title') }}
+        </a>
+        <ul class="c-sidebar-nav-dropdown-items">
+            @can('crew_type_access')
+                <li class="c-sidebar-nav-item">
+                    <a href="{{ route("admin.crew-types.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/crew-types") || request()->is("admin/crew-types/*") ? "c-active" : "" }}">
+                        <i class="fa-fw fas fa-grip-vertical c-sidebar-nav-icon">
+
+                        </i>
+                        {{ trans('cruds.crewType.title') }}
+                    </a>
+                </li>
+            @endcan
+            @can('fajr_crew_access')
+                <li class="c-sidebar-nav-item">
+                    <a href="{{ route("admin.fajr-crews.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/fajr-crews") || request()->is("admin/fajr-crews/*") ? "c-active" : "" }}">
+                        <i class="fa-fw fas fa-user-friends c-sidebar-nav-icon">
+
+                        </i>
+                        {{ trans('cruds.fajrCrew.title') }}
+                    </a>
+                </li>
+            @endcan
+        </ul>
+    </li>
+@endcan
         @can('project_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.projects.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/projects") || request()->is("admin/projects/*") ? "c-active" : "" }}">
@@ -87,46 +139,7 @@
                 </a>
             </li>
         @endcan
-        @can('slider_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.sliders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/sliders") || request()->is("admin/sliders/*") ? "c-active" : "" }}">
-                    <i class="fa-fw far fa-images c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.slider.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('subscription_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.subscriptions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/subscriptions") || request()->is("admin/subscriptions/*") ? "c-active" : "" }}">
-                    <i class="fa-fw far fa-envelope c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.subscription.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('success_partner_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.success-partners.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/success-partners") || request()->is("admin/success-partners/*") ? "c-active" : "" }}">
-                    <i class="fa-fw far fa-handshake c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.successPartner.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('setting_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.settings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cog c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.setting.title') }}
-                </a>
-            </li>
-        @endcan
+       
         @can('fajr_detail_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/policies*") ? "c-show" : "" }} {{ request()->is("admin/management*") ? "c-show" : "" }} {{ request()->is("admin/sections*") ? "c-show" : "" }} {{ request()->is("admin/descriptions*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -179,38 +192,28 @@
                 </ul>
             </li>
         @endcan
-        @can('crew_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/crew-types*") ? "c-show" : "" }} {{ request()->is("admin/fajr-crews*") ? "c-show" : "" }}">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-users c-sidebar-nav-icon">
+   
+        @can('success_partner_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.success-partners.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/success-partners") || request()->is("admin/success-partners/*") ? "c-active" : "" }}">
+                    <i class="fa-fw far fa-handshake c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.crew.title') }}
+                    {{ trans('cruds.successPartner.title') }}
                 </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    @can('crew_type_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.crew-types.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/crew-types") || request()->is("admin/crew-types/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-grip-vertical c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.crewType.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('fajr_crew_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.fajr-crews.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/fajr-crews") || request()->is("admin/fajr-crews/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-user-friends c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.fajrCrew.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
             </li>
         @endcan
+        @can('subscription_access')
+        <li class="c-sidebar-nav-item">
+            <a href="{{ route("admin.subscriptions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/subscriptions") || request()->is("admin/subscriptions/*") ? "c-active" : "" }}">
+                <i class="fa-fw far fa-envelope c-sidebar-nav-icon">
+
+                </i>
+                {{ trans('cruds.subscription.title') }}
+            </a>
+        </li>
+    @endcan
+
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">

@@ -38,7 +38,7 @@ class Project extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
-        $this->addMediaConversion('preview2')->fit('crop', 280, 280);
+        $this->addMediaConversion('preview2')->fit('crop', 523, 675);
     }
 
     public function getPhotoAttribute()

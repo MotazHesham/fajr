@@ -32,4 +32,14 @@ $('.project-info').hide();
         $(this).find(".department-ul").toggle();
     })
   });
+  
+  
+   $(document).scroll(function() { 
+            scroll_pos = $(this).scrollTop();
+            if(scroll_pos > 100) {
+                $(".fixedbar").addClass('social-media-bar-fixed');
+                } else {
+               $(".fixedbar").removeClass('social-media-bar-fixed');
+                }
+    });    
 });

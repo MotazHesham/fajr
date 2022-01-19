@@ -330,6 +330,50 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 81,
+                'title' => 'jobresquest_create',
+            ],
+            [
+                'id'    => 82,
+                'title' => 'jobresquest_edit',
+            ],
+            [
+                'id'    => 83,
+                'title' => 'jobresquest_show',
+            ],
+            [
+                'id'    => 84,
+                'title' => 'jobresquest_delete',
+            ],
+            [
+                'id'    => 85,
+                'title' => 'jobresquest_access',
+            ],
+            [
+                'id'    => 86,
+                'title' => 'the_request_access',
+            ],
+            [
+                'id'    => 87,
+                'title' => 'quotation_request_create',
+            ],
+            [
+                'id'    => 88,
+                'title' => 'quotation_request_edit',
+            ],
+            [
+                'id'    => 89,
+                'title' => 'quotation_request_show',
+            ],
+            [
+                'id'    => 90,
+                'title' => 'quotation_request_delete',
+            ],
+            [
+                'id'    => 91,
+                'title' => 'quotation_request_access',
+            ],
+            [
+                'id'    => 92,
                 'title' => 'profile_password_edit',
             ],
         ];

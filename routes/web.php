@@ -90,6 +90,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Fajr Crew
     Route::delete('fajr-crews/destroy', 'FajrCrewController@massDestroy')->name('fajr-crews.massDestroy');
     Route::resource('fajr-crews', 'FajrCrewController');
+
+    // Jobresquest
+    Route::delete('jobresquests/destroy', 'JobresquestController@massDestroy')->name('jobresquests.massDestroy');
+    Route::post('jobresquests/media', 'JobresquestController@storeMedia')->name('jobresquests.storeMedia');
+    Route::post('jobresquests/ckmedia', 'JobresquestController@storeCKEditorImages')->name('jobresquests.storeCKEditorImages');
+    Route::resource('jobresquests', 'JobresquestController');
+
+    // Quotation Request
+    Route::delete('quotation-requests/destroy', 'QuotationRequestController@massDestroy')->name('quotation-requests.massDestroy');
+    Route::resource('quotation-requests', 'QuotationRequestController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

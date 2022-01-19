@@ -3,16 +3,16 @@ body,html {
  margin: 0px;
  direction: rtl;
 overflow-x: hidden;
-font-family:'AD-STOOR' ;
+/*font-family:'AD-STOOR' ;*/
 }
 html {
   scroll-behavior: smooth;
 }
-@font-face {
-     font-family: 'AD-STOOR';
-     src: url(fonts/AD-STOOR.otf);
-     font-style: normal;
-}
+/*@font-face {*/
+/*     font-family: 'AD-STOOR';*/
+/*     src: url(fonts/AD-STOOR.otf);*/
+/*     font-style: normal;*/
+/*}*/
 h1{
     font-weight: 400 !important;
 }
@@ -24,7 +24,7 @@ h1{
     width: 100%;
 }
 .main-container a{
-    text-decoration: none;
+    text-decoration: none !important;
     transition:all 0.5s ease;
 }
 ul{
@@ -37,6 +37,125 @@ ul{
     width: 90% !important;
     max-width: 90% !important;
     margin: 0 auto !important;
+}
+
+.social-media-bar-wrapper {
+    position: absolute;
+    top: 322px;
+    right: -100px;
+    left: unset;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+.social-media-bar-fixed{
+    position: fixed;
+    top: 185px;
+}
+.social-media-bar-wrapper ul {
+  list-style: none;
+} 
+.social-media-bar-wrapper ul li {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  background: #000;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+} 
+.social-media-bar-wrapper ul li .fab {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #fff;
+} 
+.social-media-bar-wrapper ul li.snapshat {
+    background: rgb(255, 252, 0);
+}
+
+.social-media-bar-wrapper ul li.twitter{
+  background: #00aced;
+} 
+.social-media-bar-wrapper ul li.instagram{
+/*  background: #bc2a8d;*/
+background: #f09433; 
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+} 
+.social-media-bar-wrapper ul li.google{
+  background: #dc483c;
+} 
+img.gmail_icon {
+    width: 23px;
+}
+li.google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social-media-bar-wrapper ul li.snapshat div.slider{
+  background: rgb(255, 252, 0);
+} 
+.social-media-bar-wrapper ul li.twitter div.slider{
+  background: #00aced;
+} 
+.social-media-bar-wrapper ul li.instagram div.slider{
+/*  background: #dd94c6;*/
+    background: #f09433; 
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+} 
+.social-media-bar-wrapper ul li.google div.slider{
+  background: #dc483c;
+} 
+.social-media-bar-wrapper ul li.tiktok div.slider{
+  background: #000;
+} 
+li.snapshat i.fab.fa-snapchat-ghost, .social-media-bar-wrapper li.snapshat .slider p a{
+    -webkit-text-stroke: 1px black;
+}
+
+ 
+.social-media-bar-wrapper .slider {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 51px;
+  width: 0px;
+  height: 50px;
+  background: #eebb5c;
+  border-radius: 3px;
+  transition: all 0.5s 0.3s ease;
+} 
+.social-media-bar-wrapper .slider p {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  opacity: 0;
+  transition: all 0.6s ease;
+} 
+.social-media-bar-wrapper .slider p a {
+  color: #fff;
+} 
+.social-media-bar-wrapper ul li:hover .slider {
+  width: 180px;
+  transition: all 0.5s ease;
+
+} 
+.social-media-bar-wrapper ul li:hover .slider p {
+  opacity: 1;
+  transition: all 1s 0.2s ease;
+
 }
 .wa-chat-bubble-close-btn {
     cursor: pointer;
@@ -262,6 +381,8 @@ p.services-p {
     font-size: 15px;
     color: #ababab;
 /*    margin-right: 120px;*/
+    margin-top: 30px !important;
+    margin-bottom: 40px !important;
 }
 img.services-icon {
 /*
@@ -324,6 +445,30 @@ p.s4-p.text-center {
 div#projects {
     padding-top: 70px;
 }
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff !important;
+    background-color: #8c4e37 !important;
+    border-color: #8c4e37 !important;
+}
+.page-link {
+    color: #8c4e37 !important;
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: unset !important;
+    border-bottom-right-radius: unset !important;
+    border-top-left-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+}
+.page-item:first-child .page-link {
+    border-top-left-radius: unset !important;
+    border-bottom-left-radius: unset !important;
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+}
+.pagination {
+    padding-right: 0 !important;
+}
 .col-md-4.project img {
     width: 98%;
 }
@@ -344,6 +489,7 @@ div#projects {
     font-weight: 400;
     text-align: right;
     margin-bottom: 0;
+    font-size:18px;
 }
 .project-info img {
     width: 50px !important;
@@ -498,6 +644,7 @@ ul.footer-list li{
 }
 ul.footer-list li a{
     color: #fff;
+    text-decoration: none;
 }
 ul.footer-list li a:hover{
     color: #b56e54;
@@ -517,6 +664,14 @@ p.footer-p2 {
     color: #fff;
     margin-bottom: 30px;
 }
+
+p.ceo.signature {
+    font-style: italic;
+    color: #8c4e37;
+font-family: 'Rakkas', cursive;
+    font-size: 32px;
+}
+
 input#email {
     width: 100%;
     background-color: transparent;
@@ -648,6 +803,7 @@ img.team-member-img {
     border-radius: 50%;
     max-width: 120px;
     margin-bottom: 15px;
+    display:none;
 }
 .company-team .row.container {
     display: flex;
@@ -902,6 +1058,8 @@ img.social-img {
 .section3-text-wrap p, p.s4-p.text-center{
     font-size: 20px;
     line-height: 40px;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 .projects-statics {
     margin-top: -250px;
@@ -1117,6 +1275,9 @@ ul.main-menu-mobile {
     display: grid;
 }
 */
+.social-media-bar-wrapper {
+    top: 295px;
+}
 }
 
 @media (max-width:465px){

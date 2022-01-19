@@ -127,7 +127,10 @@
                         <h1>كلمة رئيس مجلس الإدارة</h1>
                         <p>
                             <?php echo nl2br($setting->chairman_word ?? ''); ?>
-                    </p>  
+                    </p> 
+                    <p class="ceo signature">
+                       ضاحي أبو صلام.
+                    </p>
                        <!-- <button class="more-btn" onclick="myFunction2()" id="myBtn">اقرأ المزيد</butt-->
                     </div>      
                 </div>
@@ -401,45 +404,44 @@
     
 <!------ extra section-------> 
 <!----contact-us-social------>
-    <div class="container contact-us-extra" id="contact-us-section">
-            <div class="section4-text-wrapper">
-            <h1 class="s4-title text-center">...نسعد بتواصلكم معنا عبر</h1>
-            </div>
-        <div class="socail-media-contact">
-            <div class="social-media">
-                <a href="mailto:{{$setting->email}}">               
-                <img class="social-img grow" src="{{asset('frontend/img/gmail.png')}}">
-                </a>
+    <!--<div class="container contact-us-extra" id="contact-us-section">-->
+    <!--        <div class="section4-text-wrapper">-->
+    <!--        <h1 class="s4-title text-center">...نسعد بتواصلكم معنا عبر</h1>-->
+    <!--        </div>-->
+    <!--    <div class="socail-media-contact">-->
+    <!--        <div class="social-media">-->
+    <!--            <a href="mailto:{{$setting->email}}">               -->
+    <!--            <img class="social-img grow" src="{{asset('frontend/img/gmail.png')}}">-->
+    <!--            </a>-->
 
-            </div>
-          <div class="social-media">
-                <a href="{{$setting->snapchat}}">               
-                    <img class="social-img grow" src="{{asset('frontend/img/snapchat.png')}}">
-                </a>
+    <!--        </div>-->
+    <!--      <div class="social-media">-->
+    <!--            <a href="{{$setting->snapchat}}">               -->
+    <!--                <img class="social-img grow" src="{{asset('frontend/img/snapchat.png')}}">-->
+    <!--            </a>-->
 
-            </div>
-          <div class="social-media">
-                 <a  href="{{$setting->tik_tok}}">
-                    <img class="social-img grow" src="{{asset('frontend/img/tiktok.png')}}">
-                </a>
+    <!--        </div>-->
+    <!--      <div class="social-media">-->
+    <!--             <a  href="{{$setting->tik_tok}}">-->
+    <!--                <img class="social-img grow" src="{{asset('frontend/img/tiktok.png')}}">-->
+    <!--            </a>-->
 
-            </div>
-          <div class="social-media">
-                 <a  href="{{$setting->twitter}}">
-                    <img class="social-img grow" src="{{asset('frontend/img/twitter.png')}}">
-                </a>
+    <!--        </div>-->
+    <!--      <div class="social-media">-->
+    <!--             <a  href="{{$setting->twitter}}">-->
+    <!--                <img class="social-img grow" src="{{asset('frontend/img/twitter.png')}}">-->
+    <!--            </a>-->
 
-            </div>
-          <div class="social-media">
-                <a href="{{$setting->instagram}}">
-                    <img class="social-img grow" src="{{asset('frontend/img/instagram.png')}}">
-                </a>
-            </div>
-        </div>
+    <!--        </div>-->
+    <!--      <div class="social-media">-->
+    <!--            <a href="{{$setting->instagram}}">-->
+    <!--                <img class="social-img grow" src="{{asset('frontend/img/instagram.png')}}">-->
+    <!--            </a>-->
+    <!--        </div>-->
+    <!--    </div>-->
     
     
-    </div>
+    <!--</div>-->
 <!----contact-us-social------> 
     
 @endsection
-

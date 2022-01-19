@@ -22,6 +22,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
+        
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet"
 
     <!--bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -48,6 +51,7 @@
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <!--java scripts-->
     <script src="{{ asset('frontend/js/myScript.js')}}"></script>
+    @yield('styles')
 </head>
 
 
@@ -59,6 +63,45 @@
     @endphp
 
     <div class="main-container">
+        
+        <div class="fixedbar social-media-bar-wrapper">
+          <ul>
+                <li class="twitter">
+                <i class="fab fa-twitter fixed_bar_icon"  aria-hidden="true"></i>
+              <div class="slider">
+                <p><a href="{{$setting->twitter }}" target="_blank">twitter</a></p>
+              </div>
+            </li>
+            <li class="tiktok">
+            <i class="fab fa-tiktok fixed_bar_icon" aria-hidden="true"></i>
+              <div class="slider">
+                <p><a href="{{$setting->tiktok }}" target="_blank">tiktok</a></p>
+              </div>
+            </li>
+            <li class="instagram">
+            <i class="fab fa-instagram fixed_bar_icon"  aria-hidden="true"></i>
+              <div class="slider">
+                <p><a href="{{$setting->instagram }}"  target="_blank">instagram</a></p>
+              </div>
+            </li>
+            <li class="snapshat">
+                <i class="fab fa-snapchat-ghost fixed_bar_icon" aria-hidden="true"></i>
+              <div class="slider">
+                <p><a href="{{$setting->Snapshat }}"  target="_blank">Snapshat</a></p>
+              </div>
+            </li>
+                <li class="google">
+              <img class="gmail_icon" src="{{ asset('frontend/img/gmail_icon.png')}}">
+              <div class="slider">
+                <p><a href="mailto:{{$setting->email }}">gmail</a></p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+        
+        
+        
         <header>
             <div class="top-bar">
                 <div class="container row">
@@ -66,11 +109,20 @@
                         <div class="row menu-mobile">
                             <i class="fas fa-bars top-bar-icon hamburger-menu"></i>
                             <ul class="main-menu-mobile">
+                                @if(request()->is("job")|| request()->is("price"))
                                 <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                                <li><a href="#services">خدماتنا</a></li>
-                                <li><a href="#projects">مشروعاتنا</a></li>
-                                <li><a href="#our-news">أخبارنا</a></li>
-                                <li><a href="#contact-us-section">اتصل بنا</a></li>
+                               <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
+                               <li><a href="{{route('frontend.price_application')}}"> طلب تسعيرة</a></li>
+                               @else
+                               <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
+                               <li><a href="#services">خدماتنا</a></li>
+                               <li><a href="#projects">مشروعاتنا</a></li>
+                               <li><a href="#our-news">أخبارنا</a></li>
+                               <li><a href="#contact-us-section">اتصل بنا</a></li>
+                               <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
+                               <li><a href="{{route('frontend.price_application')}}"> طلب تسعيرة</a></li>
+   
+                               @endif
                             </ul>
                         </div>
                         <a href="{{ $setting->instagram ?? ''}}"><i class="fab fa-instagram top-bar-icon"></i></a>
@@ -89,11 +141,20 @@
                         <div class="logo-container"><a href="{{ route('frontend.home') }}"><img class="logo"
                                     src="{{ asset('frontend/img/logo.jpg')}}"></a></div>
                         <ul class="main-menu menu-desktop">
+                             @if(request()->is("job")|| request()->is("price"))
+                             <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
+                            <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
+                            <li><a href="{{route('frontend.price_application')}}"> طلب تسعيرة</a></li>
+                            @else
                             <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
                             <li><a href="#services">خدماتنا</a></li>
                             <li><a href="#projects">مشروعاتنا</a></li>
                             <li><a href="#our-news">أخبارنا</a></li>
-                            <li><a href="#contact-us-section">اتصل بنا</a></li
+                            <li><a href="#contact-us-section">اتصل بنا</a></li>
+                            <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
+                            <li><a href="{{route('frontend.price_application')}}"> طلب تسعيرة</a></li>
+
+                            @endif
                         
                         </ul>
                     </div>
@@ -163,7 +224,7 @@
                             </li>
                             <li>
                                 <div class="contact-us-group">
-                                    <a href="mailto:{{ $setting->email ?? '' }}">{{ $setting->email ?? '' }}</a>
+                                    <a href="mailto:{{ $setting->email ?? ''}}">{{ $setting->email ?? '' }}</a>
                                     <i class="fas fa-envelope footer-icon"></i>
                                 </div>
                             </li>

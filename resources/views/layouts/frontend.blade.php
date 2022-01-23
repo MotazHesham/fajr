@@ -22,9 +22,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
-        
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet"
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 
     <!--bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -75,7 +74,7 @@
             <li class="tiktok">
             <i class="fab fa-tiktok fixed_bar_icon" aria-hidden="true"></i>
               <div class="slider">
-                <p><a href="{{$setting->tiktok }}" target="_blank">tiktok</a></p>
+                <p><a href="{{$setting->tik_tok }}" target="_blank">tiktok</a></p>
               </div>
             </li>
             <li class="instagram">
@@ -87,15 +86,10 @@
             <li class="snapshat">
                 <i class="fab fa-snapchat-ghost fixed_bar_icon" aria-hidden="true"></i>
               <div class="slider">
-                <p><a href="{{$setting->Snapshat }}"  target="_blank">Snapshat</a></p>
+                <p><a href="{{$setting->snapchat }}"  target="_blank">Snapshat</a></p>
               </div>
             </li>
-                <li class="google">
-              <img class="gmail_icon" src="{{ asset('frontend/img/gmail_icon.png')}}">
-              <div class="slider">
-                <p><a href="mailto:{{$setting->email }}">gmail</a></p>
-              </div>
-            </li>
+             
 
           </ul>
         </div>
@@ -112,7 +106,7 @@
                                 @if(request()->is("job")|| request()->is("price"))
                                 <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
                                <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                               <li><a href="{{route('frontend.price_application')}}"> طلب تسعيرة</a></li>
+                               <li><a href="{{route('frontend.price_application')}}">  تقديم طلب </a></li>
                                @else
                                <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
                                <li><a href="#services">خدماتنا</a></li>
@@ -120,7 +114,7 @@
                                <li><a href="#our-news">أخبارنا</a></li>
                                <li><a href="#contact-us-section">اتصل بنا</a></li>
                                <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                               <li><a href="{{route('frontend.price_application')}}"> طلب تسعيرة</a></li>
+                               <li><a href="{{route('frontend.price_application')}}">  تقديم طلب</a></li>
    
                                @endif
                             </ul>
@@ -144,7 +138,7 @@
                              @if(request()->is("job")|| request()->is("price"))
                              <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
                             <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                            <li><a href="{{route('frontend.price_application')}}"> طلب تسعيرة</a></li>
+                            <li><a href="{{route('frontend.price_application')}}">  تفديم طلب</a></li>
                             @else
                             <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
                             <li><a href="#services">خدماتنا</a></li>
@@ -152,7 +146,7 @@
                             <li><a href="#our-news">أخبارنا</a></li>
                             <li><a href="#contact-us-section">اتصل بنا</a></li>
                             <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                            <li><a href="{{route('frontend.price_application')}}"> طلب تسعيرة</a></li>
+                            <li><a href="{{route('frontend.price_application')}}"> تقديم طلب </a></li>
 
                             @endif
                         
@@ -228,6 +222,32 @@
                                     <i class="fas fa-envelope footer-icon"></i>
                                 </div>
                             </li>
+                             <ul class="social-media2">
+                                <li>
+                                    <div class="contact-us-group">
+                                    <a href="{{ $setting->twitter ?? '' }}">
+                                        <i class="fab fa-twitter footer-icon"></i></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact-us-group">
+                                    <a href="{{ $setting->tik_tok ?? '' }}">
+                                        <i class="fab fa-tiktok footer-icon"></i></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact-us-group">
+                                    <a href="{{ $setting->instagram ?? '' }}">
+                                       <i class="fab fa-instagram footer-icon"></i></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact-us-group">
+                                    <a href="{{ $setting->snapchat ?? '' }}">
+                                        <i class="fab fa-snapchat-ghost  footer-icon"></i></a>
+                                    </div>
+                                </li>
+                                </ul>
 
                             <li>
                                 <div class="contact-us-group">
@@ -382,6 +402,7 @@ function openTab(evt, tabName) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>
+@yield('scripts')
 </body>
 
 </html>

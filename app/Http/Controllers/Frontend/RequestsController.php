@@ -8,11 +8,15 @@ use App\Http\Requests\StoreJobresquestRequest;
 use App\Http\Requests\StoreQuotationRequestRequest;
 use App\Models\QuotationRequest;
 use App\Models\Jobresquest;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
+use Spatie\MediaLibrary\Models\Media;
 use Alert;
 
 class RequestsController extends Controller
 {
     //
+
+    use MediaUploadingTrait;
     
     public function JobRequest(StoreJobresquestRequest $request)
     {
@@ -36,5 +40,15 @@ class RequestsController extends Controller
       Alert::success('تم ارسال الطلب بنجاح','سيتم التواصل معك قريبا');  
       return redirect()->route('frontend.home');
 }
+public function storeCKEditorImages(Request $request)
+{
+    abort_if(Gate::denies('jobresquest_create') && Gate::denies('jobresquest_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+    $model         = new Jobresquest();
+    $model->id     = $request->input('crud_id', 0);
+    $model->exists = true;
+    $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+
+    return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
+}
 }

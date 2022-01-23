@@ -23,7 +23,10 @@ class StoreJobresquestRequest extends FormRequest
             'phone' => [
                 'string',
                 'required',
-            ],
+                'size:10',
+                'regex:/(05)[0-9]{8}/', 
+            
+            ],  
             'email' => [
                 'required',
             ],

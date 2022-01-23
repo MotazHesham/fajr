@@ -64,7 +64,7 @@
             <div class="main-row">
                   <div class="input">
              
-                    <select class="form-control {{ $errors->has('service') ? 'is-invalid' : '' }}" name="service" id="service" required>
+                    <select name="service" id="service" required>
                         <option value disabled {{ old('service', null) === null ? 'selected' : '' }}>برجاء اختيار نوع الخدمة المطلوبه</option>
                         @foreach(App\Models\QuotationRequest::SERVICE_SELECT as $key => $label)
                             <option value="{{ $key }}" {{ old('service', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>

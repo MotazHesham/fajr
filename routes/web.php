@@ -97,8 +97,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('jobresquests/ckmedia', 'JobresquestController@storeCKEditorImages')->name('jobresquests.storeCKEditorImages');
     Route::resource('jobresquests', 'JobresquestController');
 
-    // Quotation Request
+     // Quotation Request
     Route::delete('quotation-requests/destroy', 'QuotationRequestController@massDestroy')->name('quotation-requests.massDestroy');
+    Route::post('quotation-requests/media', 'QuotationRequestController@storeMedia')->name('quotation-requests.storeMedia');
+    Route::post('quotation-requests/ckmedia', 'QuotationRequestController@storeCKEditorImages')->name('quotation-requests.storeCKEditorImages');
     Route::resource('quotation-requests', 'QuotationRequestController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {

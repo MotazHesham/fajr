@@ -9,7 +9,10 @@ use Illuminate\Http\Response;
 
 class StoreQuotationRequestRequest extends FormRequest
 {
-  
+    public function authorize()
+    {
+        return Gate::allows('quotation_request_create');
+    }
 
     public function rules()
     {
@@ -21,10 +24,7 @@ class StoreQuotationRequestRequest extends FormRequest
             'phone' => [
                 'string',
                 'required',
-                'size:10',
-                'regex:/(05)[0-9]{8}/', 
-            
-            ],  
+            ],
             'email' => [
                 'required',
             ],
@@ -38,6 +38,9 @@ class StoreQuotationRequestRequest extends FormRequest
             'date' => [
                 'required',
                 'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
+            ],
+            'files' => [
+                'array',
             ],
         ];
     }

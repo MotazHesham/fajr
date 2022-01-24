@@ -79,6 +79,18 @@
                             {{ $quotationRequest->extra_info }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.quotationRequest.fields.files') }}
+                        </th>
+                        <td>
+                            @foreach($quotationRequest->files as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

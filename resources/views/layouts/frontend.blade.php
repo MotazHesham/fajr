@@ -50,6 +50,7 @@
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <!--java scripts-->
     <script src="{{ asset('frontend/js/myScript.js')}}"></script>
+    <script type="text/javascript"src="{{ asset('frontend/js/multi-animated-counter.js')}}"></script>
     @yield('styles')
 </head>
 
@@ -137,8 +138,12 @@
                         <ul class="main-menu menu-desktop">
                              @if(request()->is("job")|| request()->is("price"))
                              <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
+                                      <li><a href="{{ route('frontend.home') }}#services">خدماتنا</a></li>
+                                <li><a href="{{ route('frontend.home') }}#projects">مشروعاتنا</a></li>
+                                <li><a href="{{ route('frontend.home') }}#our-news">أخبارنا</a></li>
+                                <li><a href="{{ route('frontend.home') }}#contact-us-section">اتصل بنا</a></li>
                             <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                            <li><a href="{{route('frontend.price_application')}}">  تفديم طلب</a></li>
+                            <li><a href="{{route('frontend.price_application')}}">  تقديم طلب</a></li>
                             @else
                             <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
                             <li><a href="#services">خدماتنا</a></li>
@@ -162,15 +167,31 @@
             </div>
             <div class="row menu-tablet">
                 <ul class="main-menu">
-                    <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                     <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#projects">مشروعاتنا</a></li>
-                    <li><a href="#our-news">أخبارنا</a></li>
-                    <li><a href="#contact-us-section">اتصل بنا</a></li>
-                </ul>
+                  lass="main-menu menu-desktop">
+                             @if(request()->is("job")|| request()->is("price"))
+                             <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
+                                      <li><a href="{{ route('frontend.home') }}#services">خدماتنا</a></li>
+                                <li><a href="{{ route('frontend.home') }}#projects">مشروعاتنا</a></li>
+                                <li><a href="{{ route('frontend.home') }}#our-news">أخبارنا</a></li>
+                                <li><a href="{{ route('frontend.home') }}#contact-us-section">اتصل بنا</a></li>
+                            <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
+                            <li><a href="{{route('frontend.price_application')}}">  تفديم طلب</a></li>
+                            @else
+                            <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
+                            <li><a href="#services">خدماتنا</a></li>
+                            <li><a href="#projects">مشروعاتنا</a></li>
+                            <li><a href="#our-news">أخبارنا</a></li>
+                            <li><a href="#contact-us-section">اتصل بنا</a></li>
+                            <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
+                            <li><a href="{{route('frontend.price_application')}}"> تقديم طلب </a></li>
+
+                            @endif
+                        
+                        </ul>
             </div>
         </header>
         <!---------hero-section------>
+             @if(request()->is("/*"))
         <div id="slider-section" class="container-fluid hero-section">
             <div class="owl-one owl-carousel owl-theme owl-container">
                 @foreach(\App\Models\Slider::where('type','slider_1')->orderBy('created_at','desc')->get() as $slider)
@@ -180,6 +201,7 @@
                 @endforeach
             </div>
         </div>
+        @endif
         <!---------hero-section------>
 
         @yield('content')
@@ -193,7 +215,18 @@
                     <div class="col-lg-4 footer-div">
                         <h4 class="footer-title">شركة فجر الجنوب</h4>
                         <p class="footer-p"> 
-                            <?php echo nl2br($setting->about_us ?? ''); ?>
+                            @php
+                            use Illuminate\Support\Str;
+                            $len=Str::length($setting->about_us);
+                            $first = substr($setting->about_us, 0,$len/2 );
+                            $theRest = substr($setting->about_us, $len/2);
+                            @endphp
+                                {{ $first}} 
+                                <span id="dots">...</span>
+                                <span id="more">
+                            {{ $theRest}} 
+                            </p> 
+                        <button class="more-btn" onclick="myFunction2()" id="myBtn">اقرأ المزيد</button>
                         </p>
                     </div>
 

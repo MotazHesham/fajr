@@ -9,9 +9,7 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend'], function () {
     Route::Post('/jobRequest','RequestsController@JobRequest')->name('saveJobRequest');
     Route::view('/price','frontend.price')->name('price_application');
     Route::Post('/priceRequest','RequestsController@PriceRequest')->name('savePriceRequest');
-    Route::post('jobresquests/media', 'RequestsController@storeMedia')->name('jobresquests.storeMedia');
-    Route::post('jobresquests/ckmedia', 'RequestsController@storeCKEditorImages')->name('jobresquests.storeCKEditorImages');
+    Route::post('jobresquests/media', 'RequestsController@storeMedia')->name('storeMedia');
     
-
 
 });

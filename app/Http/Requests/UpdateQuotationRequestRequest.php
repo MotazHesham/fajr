@@ -24,10 +24,7 @@ class UpdateQuotationRequestRequest extends FormRequest
             'phone' => [
                 'string',
                 'required',
-                'size:10',
-                'regex:/(05)[0-9]{8}/', 
-            
-            ],  
+            ],
             'email' => [
                 'required',
             ],
@@ -41,6 +38,9 @@ class UpdateQuotationRequestRequest extends FormRequest
             'date' => [
                 'required',
                 'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
+            ],
+            'files' => [
+                'array',
             ],
         ];
     }

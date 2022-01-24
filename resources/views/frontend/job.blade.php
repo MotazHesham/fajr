@@ -123,7 +123,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 <script>
     Dropzone.options.cvDropzone = {
-    url: '{{ route('frontend.jobresquests.storeMedia') }}',
+    url: '{{ route('frontend.storeMedia') }}',
     maxFilesize: 4, // MB
     maxFiles: 1,
     addRemoveLinks: true,

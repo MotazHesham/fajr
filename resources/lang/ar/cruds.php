@@ -421,6 +421,8 @@ return [
             'date_helper'       => ' ',
             'extra_info'        => 'معلومات اضافية',
             'extra_info_helper' => ' ',
+            'files'             => 'مرفقات',
+            'files_helper'      => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
             'updated_at'        => 'Updated at',

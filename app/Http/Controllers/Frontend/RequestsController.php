@@ -36,19 +36,18 @@ class RequestsController extends Controller
     public function PriceRequest(StoreQuotationRequestRequest $request)
 {
       $quotationRequest = QuotationRequest::create($request->all());
+
+      foreach ($request->input('files', []) as $file) {
+        $quotationRequest->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+    }
+
+    if ($media = $request->input('ck-media', false)) {
+        Media::whereIn('id', $media)->update(['model_id' => $quotationRequest->id]);
+    }
+
    
       Alert::success('تم ارسال الطلب بنجاح','سيتم التواصل معك قريبا');  
       return redirect()->route('frontend.home');
 }
-public function storeCKEditorImages(Request $request)
-{
-    abort_if(Gate::denies('jobresquest_create') && Gate::denies('jobresquest_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-    $model         = new Jobresquest();
-    $model->id     = $request->input('crud_id', 0);
-    $model->exists = true;
-    $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
-
-    return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
-}
 }

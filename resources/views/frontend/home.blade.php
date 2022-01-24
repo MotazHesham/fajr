@@ -58,11 +58,19 @@
                     <div class="section3-text-wrap">
                         <h1>مرحبا بكم</h1>
                         <h1>الموقع الرسمي لفجر الجنوب</h1>
-                        <p class="services-p">
-                            <?php echo nl2br($setting->about_us ?? ''); ?>
-                        </p>
-
-                        <a class="more-btn">المزيد</a>
+                        <p >
+                            @php
+                            use Illuminate\Support\Str;
+                            $len=Str::length($setting->about_us);
+                            $first400 = substr($setting->about_us,0,$len/2 );
+                            $theRest = substr($setting->about_us, $len/2);
+                            @endphp
+                                {{ $first400}} 
+                                <span id="dots">...</span>
+                                <span id="more">
+                            {{ $theRest}} 
+                            </p> 
+                        <button class="more-btn" onclick="myFunction2()" id="myBtn">اقرأ المزيد</button>
                     </div>
                 </div>
             </div>
@@ -124,10 +132,24 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="section3-text-wrap">
-                        <h1>كلمة رئيس مجلس الإدارة</h1>
+                       <!-- <h1>كلمة رئيس مجلس الإدارة</h1>
                         <p>
                             <?php echo nl2br($setting->chairman_word ?? ''); ?>
-                    </p> 
+                    </p> -->
+                    <h1>كلمة رئيس مجلس الإدارة</h1>
+                    <p>
+                        @php
+                        
+                        $len=Str::length($setting->chairman_word);
+                        $first400 = substr($setting->chairman_word, 0,$len/2 );
+                        $theRest = substr($setting->chairman_word, $len/2);
+                        @endphp
+                            {{ $first400}} 
+                            <span id="dots">...</span>
+                            <span id="more">
+                        {{ $theRest}} 
+                        </p> 
+                    <button class="more-btn" onclick="myFunction2()" id="myBtn">اقرأ المزيد</button>
                     <p class="ceo signature">
                        ضاحي أبو صلام.
                     </p>
@@ -185,7 +207,7 @@
                 {!! $projects->links() !!}
             </div>
         </div>
-        <div class="container-fluid projects-statics">
+        <!--<div class="container-fluid projects-statics">
             <div class="container row projects-statics-inner">
                 <div class="col-md-3 statics-div">
                     <img src="{{ asset('frontend/img/pngfind_17.png')}}">
@@ -210,7 +232,101 @@
             </div>
             <div class="fill-div"></div>
         </div>
+    </div>-->
+<!--
+    <div class="container-fluid projects-statics">
+        <div class="container row projects-statics-inner">
+            <div class="col-md-3 statics-div">
+                <img src="{{ asset('frontend/img/pngfind_17.png')}}">
+            <div id="counters_1" data-TargetNum="{{ $setting->experience ?? ''}}"
+                    data-Speed="3000"
+                    data-Easing="linear">
+                </div>
+            </div>
+            <h6>سنه خبرة</h6>
+        </div>
+        <div class="col-md-3 statics-div">
+            <img src="{{ asset('frontend/img/pngfind_01.png')}}">
+            <div id="counters_2">
+                <div class="counter" 
+                    data-TargetNum="{{ $setting->projects ?? ''}}"
+                    data-Easing="linear">
+                </div>
+            </div>
+            <h6>مشروع</h6>
+        </div>
+        <div class="col-md-3 statics-div">
+            <img src="{{ asset('frontend/img/pngfind_03.png')}}">
+            <div id="counters_3">
+                <div class="counter" 
+                    data-TargetNum="{{ $setting->clients ?? ''}}"
+                    data-Easing="linear">
+                </div>
+            </div>
+            <h6>عميل</h6>
+        </div>
+        <div class="col-md-3 statics-div">
+                <img src="{{ asset('frontend/img/pngfind_05.png')}}">
+            <div id="counters_1">
+                <div class="counter" 
+                    data-TargetNum="{{ $setting->solutions ?? ''}}"
+                    data-Easing="linear">
+                </div>
+            </div>
+            <h6>حلول صناعيه</h6>
+        </div>
     </div>
+    <div class="fill-div"></div>
+</div>
+</div> -->
+<div class="container-fluid projects-statics">
+    <div class="container row projects-statics-inner">
+        <div class="col-md-3 statics-div">
+            <img src="{{ asset('frontend/img/pngfind_17.png')}}">
+<!--                        <h1>14</h1>-->
+            <div id="counters_1">
+              <div class="counter" 
+                   data-TargetNum="{{ $setting->experience ?? ''}}"
+                   data-Speed="3000"
+                   data-Easing="linear">
+              </div>
+            </div>
+            <h6>سنه خبرة</h6>
+        </div>
+        <div class="col-md-3 statics-div">
+            <img src="{{ asset('frontend/img/pngfind_01.png')}}">
+            <div id="counters_2">
+              <div class="counter" 
+                   data-TargetNum="{{ $setting->projects ?? ''}}"
+                   data-Easing="linear">
+              </div>
+            </div>
+            <h6>مشروع</h6>
+        </div>
+        <div class="col-md-3 statics-div">
+            <img src="{{ asset('frontend/img/pngfind_03.png')}}">
+            <div id="counters_3">
+              <div class="counter" 
+                   data-TargetNum="{{ $setting->clients ?? ''}}"
+                   data-Easing="linear">
+              </div>
+            </div>
+            <h6>عميل</h6>
+        </div>
+        <div class="col-md-3 statics-div">
+            <img src="{{ asset('frontend/img/pngfind_05.png')}}">
+            <div id="counters_1">
+              <div class="counter" 
+                   data-TargetNum="{{ $setting->solutions ?? ''}}"
+                   data-Easing="linear">
+              </div>
+            </div>
+            <h6>حلول صناعيه</h6>
+        </div>
+    </div>
+    <div class="fill-div"></div>
+</div>
+</div>  
 
     <!-----forth-section--------->
 

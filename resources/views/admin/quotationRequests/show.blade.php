@@ -1,4 +1,9 @@
 @extends('layouts.admin')
+@section('scripts')
+@parent
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initAutocomplete&language=ar&region=SA
+     async defer"></script>
+@stop
 @section('content')
 
 <div class="card">
@@ -37,6 +42,14 @@
                         </th>
                         <td>
                             {{ $quotationRequest->phone }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            الجوال / واتساب
+                        </th>
+                        <td>
+                            {{ $quotationRequest->whatsapp }}
                         </td>
                     </tr>
                     <tr>
@@ -81,6 +94,14 @@
                     </tr>
                     <tr>
                         <th>
+                       الموقع
+                        </th>
+                        <td>
+                            <div id="map" style="height: 500px;width: 1000px;"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.quotationRequest.fields.files') }}
                         </th>
                         <td>
@@ -104,4 +125,27 @@
 
 
 
+@endsection
+@section('scripts')
+<script>
+ 
+        
+ function initAutocomplete() {
+            var pos = {lat:   {{ $quotationRequest->address_latitude }} ,  lng: {{ $quotationRequest->address_longitude }} };
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: pos
+            });
+        infoWindow = new google.maps.InfoWindow;
+            geocoder = new google.maps.Geocoder();
+            marker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                title: '{{ $quotationRequest->address_address }}'
+            });
+            infoWindow.setContent('{{ $quotationRequest->address_address  }}');
+            infoWindow.open(map, marker);
+
+    }
+</script>
 @endsection

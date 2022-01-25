@@ -24,7 +24,9 @@ class StoreQuotationRequestRequest extends FormRequest
             'phone' => [
                 'string',
                 'required',
-            ],
+                'size:10',
+                'regex:/(05)[0-9]{8}/', 
+            ], 
             'email' => [
                 'required',
             ],
@@ -42,6 +44,12 @@ class StoreQuotationRequestRequest extends FormRequest
             'files' => [
                 'array',
             ],
+            'whatsapp' => [
+                'string',
+                'required',
+                'size:10',
+                'regex:/(05)[0-9]{8}/', 
+            ], 
         ];
     }
 }

@@ -102,6 +102,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('quotation-requests/media', 'QuotationRequestController@storeMedia')->name('quotation-requests.storeMedia');
     Route::post('quotation-requests/ckmedia', 'QuotationRequestController@storeCKEditorImages')->name('quotation-requests.storeCKEditorImages');
     Route::resource('quotation-requests', 'QuotationRequestController');
+
+        // Services
+    Route::delete('services/destroy', 'ServicesController@massDestroy')->name('services.massDestroy');
+    Route::post('services/media', 'ServicesController@storeMedia')->name('services.storeMedia');
+    Route::post('services/ckmedia', 'ServicesController@storeCKEditorImages')->name('services.storeCKEditorImages');
+    Route::resource('services', 'ServicesController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

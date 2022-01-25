@@ -12,11 +12,15 @@ class CreateQuotationRequestsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('phone');
+            $table->string('whatsapp');
             $table->string('email');
             $table->string('address');
             $table->string('service');
             $table->datetime('date');
             $table->longText('extra_info')->nullable();
+            $table->string('address_address')->nullable();
+            $table->double('address_latitude')->nullable();
+            $table->double('address_longitude')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

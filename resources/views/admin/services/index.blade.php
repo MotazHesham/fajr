@@ -1,47 +1,38 @@
 @extends('layouts.admin')
 @section('content')
-@can('quotation_request_create')
+@can('service_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.quotation-requests.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.quotationRequest.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.services.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.service.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.quotationRequest.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.service.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-QuotationRequest">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Service">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.quotationRequest.fields.id') }}
+                            {{ trans('cruds.service.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.quotationRequest.fields.name') }}
+                            {{ trans('cruds.service.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.quotationRequest.fields.phone') }}
+                            {{ trans('cruds.service.fields.description') }}
                         </th>
                         <th>
-                            {{ trans('cruds.quotationRequest.fields.email') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.quotationRequest.fields.address') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.quotationRequest.fields.service') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.quotationRequest.fields.date') }}
+                            {{ trans('cruds.service.fields.photo') }}
                         </th>
                         <th>
                             &nbsp;
@@ -49,47 +40,42 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($quotationRequests as $key => $quotationRequest)
-                        <tr data-entry-id="{{ $quotationRequest->id }}">
+                    @foreach($services as $key => $service)
+                        <tr data-entry-id="{{ $service->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $quotationRequest->id ?? '' }}
+                                {{ $service->id ?? '' }}
                             </td>
                             <td>
-                                {{ $quotationRequest->name ?? '' }}
+                                {{ $service->name ?? '' }}
                             </td>
                             <td>
-                                {{ $quotationRequest->phone ?? '' }}
+                                {{ $service->description ?? '' }}
                             </td>
                             <td>
-                                {{ $quotationRequest->email ?? '' }}
+                                @if($service->photo)
+                                    <a href="{{ $service->photo->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $service->photo->getUrl('thumb') }}">
+                                    </a>
+                                @endif
                             </td>
                             <td>
-                                {{ $quotationRequest->address ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\QuotationRequest::SERVICE_SELECT[$quotationRequest->service] ?? '' }}
-                            </td>
-                            <td>
-                                {{ $quotationRequest->date ?? '' }}
-                            </td>
-                            <td>
-                                @can('quotation_request_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.quotation-requests.show', $quotationRequest->id) }}">
+                                @can('service_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.services.show', $service->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                               <!-- @can('quotation_request_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.quotation-requests.edit', $quotationRequest->id) }}">
+                                @can('service_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.services.edit', $service->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
-                                @endcan-->
+                                @endcan
 
-                                @can('quotation_request_delete')
-                                    <form action="{{ route('admin.quotation-requests.destroy', $quotationRequest->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('service_delete')
+                                    <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -114,11 +100,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('quotation_request_delete')
+@can('service_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.quotation-requests.massDestroy') }}",
+    url: "{{ route('admin.services.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -149,7 +135,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 25,
   });
-  let table = $('.datatable-QuotationRequest:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Service:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

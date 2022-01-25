@@ -374,6 +374,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 92,
+                'title' => 'service_create',
+            ],
+            [
+                'id'    => 93,
+                'title' => 'service_edit',
+            ],
+            [
+                'id'    => 94,
+                'title' => 'service_show',
+            ],
+            [
+                'id'    => 95,
+                'title' => 'service_delete',
+            ],
+            [
+                'id'    => 96,
+                'title' => 'service_access',
+            ],
+            [
+                'id'    => 97,
                 'title' => 'profile_password_edit',
             ],
         ];

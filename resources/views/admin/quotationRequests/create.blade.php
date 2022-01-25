@@ -1,4 +1,10 @@
 @extends('layouts.admin')
+@section('scripts')
+@parent
+<script src="/js/mapInput.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initAutocomplete&language=ar&region=SA
+     async defer"></script>
+@stop
 @section('content')
 
 <div class="card">
@@ -25,6 +31,16 @@
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('phone') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.quotationRequest.fields.phone_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="whatsapp">الجوال /واتساب</label>
+                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="whatsapp" id="whatsapp" value="{{ old('whatsapp', '') }}" required>
+                @if($errors->has('whatsapp'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('whatsapp') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.quotationRequest.fields.phone_helper') }}</span>
@@ -96,6 +112,19 @@
                 <span class="help-block">{{ trans('cruds.quotationRequest.fields.files_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="projectinput1"> الموقع  </label>
+                <input type="text" id="pac-input"
+                       class="form-control"
+                       placeholder="  " name="address_address">
+
+                @error("address")
+                <span class="text-danger"> {{$message}}</span>
+                @enderror
+                <input type="hidden" name="address_latitude" id="latitude" value="" />
+                <input type="hidden" name="address_longitude" id="longitude" value="" />
+            </div>
+            <div id="map" style="height: 500px;width: 1000px;"></div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
@@ -165,4 +194,5 @@ Dropzone.options.filesDropzone = {
      }
 }
 </script>
+
 @endsection

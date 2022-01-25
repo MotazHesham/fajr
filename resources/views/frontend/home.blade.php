@@ -5,43 +5,24 @@
     <!-------second-section------->
     <div id="services" class="container-fluid section2">
         <div class="row">
+            @foreach ($services as $service )
+            @php
+              if($service->photo)
+                $service_image=$service->photo->geturl();
+              else
+              $service_image= asset('frontend/img/service-icon1.png');
+            
+            @endphp
             <a class="col-md-3 services" href="#">
                 <div class="service-text">
-                    <h1 class="services-title">مبــــــــــاني</h1>
+                    <h1 class="services-title">{{ $service->name }}</h1>
                     <p class="services-p">
-                        <?php echo nl2br($setting->building_text ?? ''); ?>
+                        <?php echo nl2br($service->description ?? ''); ?>
                     </p>
                 </div>
-                <img class="services-icon" src="{{ asset('frontend/img/service-icon1.png')}}">
+                <img class="services-icon" src="{{$service_image}}">
             </a>
-            <a class="col-md-3 services" href="#">
-                <div class="service-text">
-                    <h1 class="services-title">ترميــــــــم</h1>
-                    <p class="services-p">
-                        <?php echo nl2br($setting->trmem ?? ''); ?>
-                    </p>
-                </div>
-                <img class="services-icon" src="{{ asset('frontend/img/service-icon2.png')}}">
-            </a>
-            <a class="col-md-3 services" href="#">
-                <div class="service-text">
-                    <h1 class="services-title">صيــــــــانه</h1>
-                    <p class="services-p">
-                        <?php echo nl2br($setting->fix_text ?? ''); ?>
-                    </p>
-                </div>
-                <img class="services-icon" src="{{ asset('frontend/img/service-icon3.png')}}">
-            </a>
-            <a class="col-md-3 services" href="#">
-                <div class="service-text">
-                    <h1 class="services-title">ديكـــــــور</h1>
-                    <p class="services-p">
-                        <?php echo nl2br($setting->decore_text ?? ''); ?>
-                    </p>
-                </div>
-                <img class="services-icon" src="{{ asset('frontend/img/service-icon4.png')}}">
-            </a>
-
+            @endforeach
         </div>
     </div>
     <!-------second-section------->
@@ -158,6 +139,7 @@
                 </div>
                 </div>
             </div>
+            @if($fajrCrews)
          <div class="section4-text-wrapper">
             <h1 class="s4-title text-center">فريق العمل</h1>
             <p class="s4-p text-center"><?php echo nl2br($fajrCrews->description ?? ''); ?> </p>
@@ -180,6 +162,7 @@
         </div>
     </div>
     </div
+    @endif
     
     
 <!------ extra section------->

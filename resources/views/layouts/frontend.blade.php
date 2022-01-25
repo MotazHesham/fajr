@@ -107,7 +107,7 @@
                                 @if(request()->is("job")|| request()->is("price"))
                                 <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
                                <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                               <li><a href="{{route('frontend.price_application')}}">  تقديم طلب </a></li>
+                               <li><a href="{{route('frontend.price_application')}}">    طلب خدمة هندسيه </a></li>
                                @else
                                <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
                                <li><a href="#services">خدماتنا</a></li>
@@ -115,7 +115,7 @@
                                <li><a href="#our-news">أخبارنا</a></li>
                                <li><a href="#contact-us-section">اتصل بنا</a></li>
                                <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                               <li><a href="{{route('frontend.price_application')}}">  تقديم طلب</a></li>
+                               <li><a href="{{route('frontend.price_application')}}">   طلب خدمة هندسيه</a></li>
    
                                @endif
                             </ul>
@@ -143,7 +143,7 @@
                                 <li><a href="{{ route('frontend.home') }}#our-news">أخبارنا</a></li>
                                 <li><a href="{{ route('frontend.home') }}#contact-us-section">اتصل بنا</a></li>
                             <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                            <li><a href="{{route('frontend.price_application')}}">  تقديم طلب</a></li>
+                            <li><a href="{{route('frontend.price_application')}}">طلب خدمة هندسيه</a></li>
                             @else
                             <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
                             <li><a href="#services">خدماتنا</a></li>
@@ -151,7 +151,7 @@
                             <li><a href="#our-news">أخبارنا</a></li>
                             <li><a href="#contact-us-section">اتصل بنا</a></li>
                             <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                            <li><a href="{{route('frontend.price_application')}}"> تقديم طلب </a></li>
+                            <li><a href="{{route('frontend.price_application')}}">طلب خدمة هندسيه </a></li>
 
                             @endif
                         

@@ -35,6 +35,7 @@ class QuotationRequestController extends Controller
 
     public function store(StoreQuotationRequestRequest $request)
     {
+
         $quotationRequest = QuotationRequest::create($request->all());
 
         foreach ($request->input('files', []) as $file) {

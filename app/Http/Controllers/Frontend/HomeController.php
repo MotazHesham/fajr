@@ -10,6 +10,7 @@ use App\Models\Subscription;
 use App\Models\FajrCrew;
 use App\Models\Policy;
 use App\Models\Section;
+use App\Models\Service;
 use App\Models\Management;
 use App\Models\Description;
 use App\Models\SuccessPartner;
@@ -28,7 +29,8 @@ class HomeController
         $management = Management::get()->take(10);
         $descriptions = Description::with(['media'])->get()->take(4);
         $successPartners = SuccessPartner::with(['media'])->get()->take(5);
-        return view('frontend.home',compact('setting','news','projects','fajrCrews','policies','sections','management','descriptions','successPartners'));
+        $services = Service::with(['media'])->get();
+        return view('frontend.home',compact('setting','news','projects','fajrCrews','policies','sections','management','descriptions','successPartners','services'));
     }
 
     public function subscription(Request $request)

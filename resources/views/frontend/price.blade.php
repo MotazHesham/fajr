@@ -1,5 +1,10 @@
 @extends('layouts.frontend')
-
+@section('scripts')
+@parent
+<script src="/js/mapInput.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initAutocomplete&language=ar&region=SA
+     async defer"></script>
+@stop
 @section('styles')
     <link rel="stylesheet" href="{{asset('frontend/assets/j-forms.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -14,7 +19,7 @@
 @section('content')
 <div class="job-application-section">
     <div class="container">
-        <h2 class="job-application-title"> طلب تسعيرة</h2>
+        <h2 class="job-application-title"> طلب خدمة هندسية</h2>
         @if($errors->count() > 0)
         <div class="alert alert-danger">
             <ul class="list-unstyled">
@@ -46,7 +51,12 @@
                         <input type="text" placeholder="رقم الهاتف" id="phone" name="phone">
                     </div>
                 </div>
+                <div class="main-row">
+                    <div class="input">
 
+                        <input type="text" placeholder=" الجوال/ واتساب" id="whatsapp" name="whatsapp">
+                    </div>
+                </div>
             <!-- start country -->
             <!-- end country --> 
 
@@ -76,21 +86,43 @@
             <!-- end position -->
 
             <!-- start files -->
-
             <div class="main-row">
                 <div class="input">
-                    <p>برجاء اختيار الموعد المتاح لديك</p>
-                    <input class="form-control datetime {{ $errors->has('date') ? 'is-invalid' : '' }}"  name="date" id='datetimepicker1'  >
+                <textarea class="form-control {{ $errors->has('extra_info') ? 'is-invalid' : '' }}" name="extra_info" id="extra_info"  placeholder= "وصف الخدمة المطلوبة">{{ old('extra_info') }}</textarea>
+                @if($errors->has('extra_info'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('extra_info') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.quotationRequest.fields.extra_info_helper') }}</span>
+            </div>
+            </div>
+            <div class="main-row">
+                <div class="input">
+                    <input class="form-control datetime {{ $errors->has('date') ? 'is-invalid' : '' }}"  name="date" id='datetimepicker1'  placeholder=" برجاء اختيار الموعد المتاح لديك">
                      
                  </div>
             </div>
-
             
             <div class="form-group">
                 <p>{{ trans('cruds.quotationRequest.fields.files') }}</p>
                 <div class="needsclick dropzone {{ $errors->has('files') ? 'is-invalid' : '' }}" id="files-dropzone">
                 </div>
             </div>
+            <div class="main-row">
+                <div class="input">
+                <p for="projectinput1"> الموقع  </p>
+                <input type="text" id="pac-input"
+                       placeholder="  " name="address_address">
+                  
+                @error("address")
+                <span class="text-danger"> {{$message}}</span>
+                @enderror
+                <input type="hidden" name="address_latitude" id="latitude" value="" />
+                <input type="hidden" name="address_longitude" id="longitude" value="" />
+            </div>
+            </div>
+            <div id="map" style="height: 500px;width: 1300px;"></div>
 
 
             <!-- end files -->

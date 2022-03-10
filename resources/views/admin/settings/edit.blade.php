@@ -263,6 +263,38 @@
                 <span class="help-block">{{ trans('cruds.setting.fields.chairman_word_helper') }}</span>
             </div>
             </div>
+            <div class="form-group col-md-4">
+                <label for="about_fajr">{{ trans('cruds.setting.fields.about_fajr') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('about_fajr') ? 'is-invalid' : '' }}" id="about_fajr-dropzone">
+                </div>
+                @if($errors->has('about_fajr'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('about_fajr') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.setting.fields.about_fajr_helper') }}671x611</span>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="logo">صورة السلايدر</label>
+                <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo-dropzone">
+                </div>
+                @if($errors->has('logo'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('logo') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.setting.fields.logo_helper') }}1920x500</span>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="required" for="crew_text">{{ trans('cruds.setting.fields.crew_text') }}</label>
+                <textarea class="form-control {{ $errors->has('crew_text') ? 'is-invalid' : '' }}" name="crew_text" id="crew_text" required>{{ old('crew_text', $setting->crew_text) }}</textarea>
+                @if($errors->has('crew_text'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('crew_text') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.setting.fields.crew_text_helper') }}</span>
+            </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
@@ -324,6 +356,114 @@
 
          return _results
      }
+}
+</script>
+<script>
+    Dropzone.options.aboutFajrDropzone = {
+    url: '{{ route('admin.settings.storeMedia') }}',
+    maxFilesize: 2, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2,
+      width: 671,
+      height: 611
+    },
+    success: function (file, response) {
+      $('form').find('input[name="about_fajr"]').remove()
+      $('form').append('<input type="hidden" name="about_fajr" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="about_fajr"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($setting) && $setting->about_fajr)
+      var file = {!! json_encode($setting->about_fajr) !!}
+          this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, file.preview)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="about_fajr" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
+
+        return _results
+    }
+}
+</script>
+<script>
+    Dropzone.options.logoDropzone = {
+    url: '{{ route('admin.settings.storeMedia') }}',
+    maxFilesize: 2, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2,
+      width: 1920,
+      height: 500
+    },
+    success: function (file, response) {
+      $('form').find('input[name="logo"]').remove()
+      $('form').append('<input type="hidden" name="logo" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="logo"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($setting) && $setting->logo)
+      var file = {!! json_encode($setting->logo) !!}
+          this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, file.preview)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
+
+        return _results
+    }
 }
 </script>
 @endsection

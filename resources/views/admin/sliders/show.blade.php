@@ -37,10 +37,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.slider.fields.type') }}
+                            {{ trans('cruds.slider.fields.abstract') }}
                         </th>
                         <td>
-                            {{ App\Models\Slider::TYPE_SELECT[$slider->type] ?? '' }}
+                            {{ $slider->abstract?? '' }}
                         </td>
                     </tr>
                 </tbody>

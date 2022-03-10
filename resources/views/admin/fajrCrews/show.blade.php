@@ -25,10 +25,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.fajrCrew.fields.description') }}
+                            {{ trans('cruds.fajrCrew.fields.name') }}
                         </th>
                         <td>
-                            {{ $fajrCrew->description }}
+                            {{ $fajrCrew->name }}
                         </td>
                     </tr>
                     <tr>
@@ -39,6 +39,26 @@
                             @foreach($fajrCrew->types as $key => $type)
                                 <span class="label label-info">{{ $type->type }}</span>
                             @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.fajrCrew.fields.job_name') }}
+                        </th>
+                        <td>
+                            {{ $fajrCrew->job_name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.fajrCrew.fields.photo') }}
+                        </th>
+                        <td>
+                            @if($fajrCrew->photo)
+                                <a href="{{ $fajrCrew->photo->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $fajrCrew->photo->getUrl('thumb') }}">
+                                </a>
+                            @endif
                         </td>
                     </tr>
                 </tbody>

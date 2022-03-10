@@ -86,9 +86,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('crew-types/media', 'CrewTypeController@storeMedia')->name('crew-types.storeMedia');
     Route::post('crew-types/ckmedia', 'CrewTypeController@storeCKEditorImages')->name('crew-types.storeCKEditorImages');
     Route::resource('crew-types', 'CrewTypeController');
-
+   
     // Fajr Crew
     Route::delete('fajr-crews/destroy', 'FajrCrewController@massDestroy')->name('fajr-crews.massDestroy');
+    Route::post('fajr-crews/media', 'FajrCrewController@storeMedia')->name('fajr-crews.storeMedia');
+    Route::post('fajr-crews/ckmedia', 'FajrCrewController@storeCKEditorImages')->name('fajr-crews.storeCKEditorImages');
     Route::resource('fajr-crews', 'FajrCrewController');
 
     // Jobresquest
@@ -108,6 +110,30 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('services/media', 'ServicesController@storeMedia')->name('services.storeMedia');
     Route::post('services/ckmedia', 'ServicesController@storeCKEditorImages')->name('services.storeCKEditorImages');
     Route::resource('services', 'ServicesController');
+
+        // Said About Us
+    // Said About Us
+    Route::delete('said-aboutuses/destroy', 'SaidAboutUsController@massDestroy')->name('said-aboutuses.massDestroy');
+    Route::post('said-aboutuses/media', 'SaidAboutUsController@storeMedia')->name('said-aboutuses.storeMedia');
+    Route::post('said-aboutuses/ckmedia', 'SaidAboutUsController@storeCKEditorImages')->name('said-aboutuses.storeCKEditorImages');
+    Route::resource('said-aboutuses', 'SaidAboutUsController');
+
+    
+    // Fa Qs
+    Route::delete('fa-qs/destroy', 'FaQsController@massDestroy')->name('fa-qs.massDestroy');
+    Route::post('fa-qs/media', 'FaQsController@storeMedia')->name('fa-qs.storeMedia');
+    Route::post('fa-qs/ckmedia', 'FaQsController@storeCKEditorImages')->name('fa-qs.storeCKEditorImages');
+    Route::resource('fa-qs', 'FaQsController');
+
+     // Certificates
+     Route::delete('certificates/destroy', 'CertificatesController@massDestroy')->name('certificates.massDestroy');
+     Route::post('certificates/media', 'CertificatesController@storeMedia')->name('certificates.storeMedia');
+     Route::post('certificates/ckmedia', 'CertificatesController@storeCKEditorImages')->name('certificates.storeCKEditorImages');
+     Route::resource('certificates', 'CertificatesController');
+ 
+     // Contact
+     Route::delete('contacts/destroy', 'ContactController@massDestroy')->name('contacts.massDestroy');
+     Route::resource('contacts', 'ContactController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
@@ -118,3 +144,4 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
+   

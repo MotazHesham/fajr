@@ -1,0 +1,192 @@
+
+/*---=======================
+   04. Start About css 
+===========================---*/
+
+.about-area-v1{
+    & .about-img-box{
+        margin-left: -200px;
+        @media #{$lg}{
+            margin-left: 0px;
+        }
+        @media #{$xm}{
+            margin-left: 0px;
+            margin-bottom: 60px;
+        }
+    }
+    & .about-content-box{
+        margin-left: 40px;
+        margin-right: -70px;
+        @media #{$lg}{
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        @media #{$xm}{
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        & .section-title{
+            & h2{
+                & span{
+                    &.thin{
+                        font-weight: 300;
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+        & h5{
+            font-size: 17px;
+            line-height: 28px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        & p{
+            margin-bottom: 35px;
+        }
+    }
+}
+
+.about-area-v2{
+    & .about-img{
+        margin-left: -100px;
+        @media #{$lg}{
+            margin-left: 0px;
+        }
+        @media #{$xm}{
+            margin-left: 0px;
+            margin-bottom: 60px;
+        }
+    }
+    & .about-content-box{
+        & h2{
+            margin-bottom: 25px;
+            @media #{$lg}{
+                font-size: 32px;
+                line-height: 42px;
+            }
+            @media #{$xm}{
+                font-size: 26px;
+                line-height: 36px;
+            }
+            & span{
+                color: $theme-color;
+            }
+        }
+        & .content-box{
+            background-color: #fff4ef;
+            padding: 25px 40px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            & p{
+                font-size: 15px;
+                color: $heading-color;
+                font-weight: 700;
+                padding-left: 35px;
+                border-left: 3px solid $theme-color;
+                margin-bottom: 0px;
+            }
+        }
+        & p{
+            margin-bottom: 35px;
+        }
+    }
+}
+
+.about-area-v3{
+    & .section-title{
+        & span.span{
+            color: $theme-color;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: $gilory;
+            &:after{
+                display: inline-block;
+                content: '';
+                width: 100px;
+                height: 3px;
+                margin-left: 20px;
+                border-radius: 2px;
+                vertical-align: middle;
+                background-color: $theme-color;
+            }
+            margin-bottom: 15px;
+        }
+    }
+    & .about-content-box{
+        @media #{$xm}{
+            margin-bottom: 40px;
+        }
+        & p{
+            color: #d3d3d3;
+        }
+    }
+    & .counter-wrapper{
+        margin-top: 35px;
+        .counter-column{
+            position: relative;
+            &:after{
+                position: absolute;
+                content: '';
+                right: 15px;
+                top: 0;
+                width: 5px;
+                height: 100%;
+                background-color: $white;
+                border-radius: 3px;
+            }
+            &:last-child{
+                &::after{
+                    display: none;
+                }
+            }
+            @media #{$xm}{
+                margin-bottom: 60px;
+            }
+            @media #{$xs}{
+                &:after{
+                    display: none;
+                }
+            }
+        }
+        & .counter-box{
+            & h2{
+                color: $theme-color;
+                margin-bottom: 15px;
+                line-height: 1;
+                & span{
+                    &.plus{
+                        font-size: 25px;
+                        vertical-align: super;
+                        margin-left: -10px;
+                    }
+                }
+                @media #{$lg}{
+                    font-size: 32px;
+                    line-height: 42px;
+                }
+            }
+            & h4{
+                color: $white;
+                font-size: 22px;
+                @media #{$lg}{
+                    font-size: 18px;
+                    line-height: 28px;
+                }
+            }
+        }
+    }
+    & .about-img{
+        text-align: right;
+        margin-right: -100px;
+        @media #{$lg}{
+            margin-right: 0px;
+        }
+        @media #{$xm}{
+            margin-right: 0px;
+        }
+    }
+}
+/*---=======================
+   End About css 
+===========================---*/

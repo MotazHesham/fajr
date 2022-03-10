@@ -12,6 +12,10 @@ class CreateProjectsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->longText('description')->nullable();
+            $table->string('client_name');
+            $table->string('location');
+            $table->string('type');
+            $table->date('date');
             $table->timestamps();
             $table->softDeletes();
         });

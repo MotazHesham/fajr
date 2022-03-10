@@ -8,6 +8,8 @@ use App\Http\Requests\StoreJobresquestRequest;
 use App\Http\Requests\StoreQuotationRequestRequest;
 use App\Models\QuotationRequest;
 use App\Models\Jobresquest;
+use App\Http\Requests\StoreContactRequest;
+use App\Models\Contact;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use Spatie\MediaLibrary\Models\Media;
 use Alert;
@@ -50,4 +52,12 @@ class RequestsController extends Controller
       return redirect()->route('frontend.home');
 }
 
+public function contact(StoreContactRequest $request)
+{
+    $contact = Contact::create($request->all());
+
+    Alert::success('تم ارسال الطلب بنجاح','سيتم التواصل معك قريبا');
+    return redirect()->route('frontend.home');
+
+}
 }

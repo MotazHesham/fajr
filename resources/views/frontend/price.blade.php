@@ -77,8 +77,8 @@
              
                     <select name="service" id="service" required>
                         <option value disabled {{ old('service', null) === null ? 'selected' : '' }}>برجاء اختيار نوع الخدمة المطلوبه</option>
-                        @foreach(App\Models\QuotationRequest::SERVICE_SELECT as $key => $label)
-                            <option value="{{ $key }}" {{ old('service', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        @foreach(App\Models\Service::get() as $key => $label)
+                            <option value="{{ $key }}" {{ old('service', '') === (string) $key ? 'selected' : '' }}>{{ $label->name }}</option>
                         @endforeach
                     </select>
             </div>
@@ -109,27 +109,19 @@
                 <div class="needsclick dropzone {{ $errors->has('files') ? 'is-invalid' : '' }}" id="files-dropzone">
                 </div>
             </div>
-            <div class="main-row">
-                <div class="input">
-                <p for="projectinput1"> الموقع  </p>
+            <div class="form-group">
+                <label for="projectinput1"> الموقع  </label>
                 <input type="text" id="pac-input"
+                       class="form-control"
                        placeholder="  " name="address_address">
-                  
+
                 @error("address")
                 <span class="text-danger"> {{$message}}</span>
                 @enderror
                 <input type="hidden" name="address_latitude" id="latitude" value="" />
                 <input type="hidden" name="address_longitude" id="longitude" value="" />
             </div>
-            </div>
-            <div id="map" style="height: 500px;width: 1300px;"></div>
-
-
-            <!-- end files -->
-
-
-            <!-- end /.content -->
-
+            <div id="map" style="height: 500px;width: 1000px;"></div>
             <div class="">
                 <button type="submit" class="primary-btn">ارسال</button>
 

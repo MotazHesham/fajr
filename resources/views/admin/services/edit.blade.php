@@ -39,7 +39,7 @@
                         {{ $errors->first('photo') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.service.fields.photo_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.service.fields.photo_helper') }}800x410</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
@@ -67,8 +67,8 @@
     },
     params: {
       size: 4,
-      width: 4096,
-      height: 4096
+      width: 800,
+      height: 410
     },
     success: function (file, response) {
       $('form').find('input[name="photo"]').remove()

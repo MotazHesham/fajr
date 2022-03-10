@@ -26,10 +26,16 @@
                             {{ trans('cruds.fajrCrew.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.fajrCrew.fields.description') }}
+                            {{ trans('cruds.fajrCrew.fields.name') }}
                         </th>
                         <th>
                             {{ trans('cruds.fajrCrew.fields.type') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.fajrCrew.fields.job_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.fajrCrew.fields.photo') }}
                         </th>
                         <th>
                             &nbsp;
@@ -46,12 +52,22 @@
                                 {{ $fajrCrew->id ?? '' }}
                             </td>
                             <td>
-                                {{ $fajrCrew->description ?? '' }}
+                                {{ $fajrCrew->name ?? '' }}
                             </td>
                             <td>
                                 @foreach($fajrCrew->types as $key => $item)
                                     <span class="badge badge-info">{{ $item->type }}</span>
                                 @endforeach
+                            </td>
+                            <td>
+                                {{ $fajrCrew->job_name ?? '' }}
+                            </td>
+                            <td>
+                                @if($fajrCrew->photo)
+                                    <a href="{{ $fajrCrew->photo->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $fajrCrew->photo->getUrl('thumb') }}">
+                                    </a>
+                                @endif
                             </td>
                             <td>
                                 @can('fajr_crew_show')
@@ -125,7 +141,7 @@
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 25,
   });
   let table = $('.datatable-FajrCrew:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

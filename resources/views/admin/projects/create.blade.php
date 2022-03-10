@@ -20,6 +20,61 @@
                 <span class="help-block">{{ trans('cruds.project.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="description">{{ trans('cruds.project.fields.description') }}</label>
+                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description') }}</textarea>
+                @if($errors->has('description'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('description') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.project.fields.description_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="client_name">{{ trans('cruds.project.fields.client_name') }}</label>
+                <input class="form-control {{ $errors->has('client_name') ? 'is-invalid' : '' }}" type="text" name="client_name" id="client_name" value="{{ old('client_name', '') }}" required>
+                @if($errors->has('client_name'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('client_name') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.project.fields.client_name_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="location">{{ trans('cruds.project.fields.location') }}</label>
+                <input class="form-control {{ $errors->has('location') ? 'is-invalid' : '' }}" type="text" name="location" id="location" value="{{ old('location', '') }}" required>
+                @if($errors->has('location'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('location') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.project.fields.location_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required">{{ trans('cruds.project.fields.type') }}</label>
+                <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type" required>
+                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Service::get() as $key => $label)
+                    <option value="{{ $label->name }}" {{ old('type', '') === (string) $key ? 'selected' : '' }}>{{ $label->name }}</option>
+                @endforeach
+                </select>
+                @if($errors->has('type'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('type') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.project.fields.type_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="date">{{ trans('cruds.project.fields.date') }}</label>
+                <input class="form-control date {{ $errors->has('date') ? 'is-invalid' : '' }}" type="text" name="date" id="date" value="{{ old('date') }}" required>
+                @if($errors->has('date'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('date') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.project.fields.date_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="photo">{{ trans('cruds.project.fields.photo') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
                 </div>
@@ -29,16 +84,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.project.fields.photo_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="description">{{ trans('cruds.project.fields.description') }}</label>
-                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description') }}</textarea>
-                @if($errors->has('description'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('description') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.project.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

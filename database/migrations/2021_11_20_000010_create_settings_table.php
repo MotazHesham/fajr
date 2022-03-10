@@ -34,6 +34,7 @@ class CreateSettingsTable extends Migration
             $table->longText('our_vision');
             $table->longText('our_strategy');
             $table->longText('chairman_word');
+            $table->longText('crew_text');
             $table->timestamps();
             $table->softDeletes();
         });

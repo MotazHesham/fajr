@@ -33,6 +33,7 @@ class News extends Model implements HasMedia
         'short_description',
         'date',
         'long_description',
+        'writer_name',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -42,7 +43,8 @@ class News extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
-        $this->addMediaConversion('preview2')->fit('crop', 280, 280);
+        $this->addMediaConversion('preview2')->fit('crop', 370, 320);
+        $this->addMediaConversion('preview3')->fit('crop', 800, 400);
     }
 
     public function getDateAttribute($value)
@@ -63,6 +65,7 @@ class News extends Model implements HasMedia
             $file->thumbnail = $file->getUrl('thumb');
             $file->preview   = $file->getUrl('preview');
             $file->preview2   = $file->getUrl('preview2');
+            $file->preview3   = $file->getUrl('preview3');
         }
 
         return $file;

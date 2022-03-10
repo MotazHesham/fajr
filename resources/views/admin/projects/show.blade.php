@@ -33,6 +33,46 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.project.fields.description') }}
+                        </th>
+                        <td>
+                            {{ $project->description }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.project.fields.client_name') }}
+                        </th>
+                        <td>
+                            {{ $project->client_name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.project.fields.location') }}
+                        </th>
+                        <td>
+                            {{ $project->location }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.project.fields.type') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Project::TYPE_SELECT[$project->type] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.project.fields.date') }}
+                        </th>
+                        <td>
+                            {{ $project->date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.project.fields.photo') }}
                         </th>
                         <td>
@@ -41,14 +81,6 @@
                                     <img src="{{ $project->photo->getUrl('thumb') }}">
                                 </a>
                             @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.project.fields.description') }}
-                        </th>
-                        <td>
-                            {{ $project->description }}
                         </td>
                     </tr>
                 </tbody>

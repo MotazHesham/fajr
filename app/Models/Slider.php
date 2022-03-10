@@ -32,7 +32,7 @@ class Slider extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'type',
+        'abstract',
         'created_at',
         'updated_at',
         'deleted_at',

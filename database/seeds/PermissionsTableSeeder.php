@@ -394,6 +394,90 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 97,
+                'title' => 'said_about_us_create',
+            ],
+            [
+                'id'    => 98,
+                'title' => 'said_about_us_edit',
+            ],
+            [
+                'id'    => 99,
+                'title' => 'said_about_us_show',
+            ],
+            [
+                'id'    => 100,
+                'title' => 'said_about_us_delete',
+            ],
+            [
+                'id'    => 101,
+                'title' => 'said_about_us_access',
+            ],
+            [
+                'id'    => 102,
+                'title' => 'fa_q_create',
+            ],
+            [
+                'id'    => 103,
+                'title' => 'fa_q_edit',
+            ],
+            [
+                'id'    => 104,
+                'title' => 'fa_q_show',
+            ],
+            [
+                'id'    => 105,
+                'title' => 'fa_q_delete',
+            ],
+            [
+                'id'    => 106,
+                'title' => 'fa_q_access',
+            ],
+            [
+                'id'    => 107,
+                'title' => 'certificate_create',
+            ],
+            [
+                'id'    => 108,
+                'title' => 'certificate_edit',
+            ],
+            [
+                'id'    => 109,
+                'title' => 'certificate_show',
+            ],
+            [
+                'id'    => 110,
+                'title' => 'certificate_delete',
+            ],
+            [
+                'id'    => 111,
+                'title' => 'certificate_access',
+            ],
+            [
+                'id'    => 112,
+                'title' => 'contactu_access',
+            ],
+            [
+                'id'    => 113,
+                'title' => 'contact_create',
+            ],
+            [
+                'id'    => 114,
+                'title' => 'contact_edit',
+            ],
+            [
+                'id'    => 115,
+                'title' => 'contact_show',
+            ],
+            [
+                'id'    => 116,
+                'title' => 'contact_delete',
+            ],
+            [
+                'id'    => 117,
+                'title' => 'contact_access',
+            ],
+            [
+                'id'    => 118,
                 'title' => 'profile_password_edit',
             ],
         ];

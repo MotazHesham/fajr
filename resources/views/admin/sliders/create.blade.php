@@ -18,22 +18,17 @@
                         {{ $errors->first('photo') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.photo_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.slider.fields.photo_helper') }}1920x1100 </span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.slider.fields.type') }}</label>
-                <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type" required>
-                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Slider::TYPE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('type'))
+                <label for="abstract"> {{ trans('cruds.slider.fields.abstract') }}</label>
+                <input class="form-control {{ $errors->has('abstract') ? 'is-invalid' : '' }}" type="text" name="abstract" id="abstract" value="{{ old('abstract', '') }}" >
+                @if($errors->has('abstract'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('type') }}
+                        {{ $errors->first('abstract') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.type_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.slider.fields.abstract_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
@@ -60,9 +55,9 @@
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 2,
-      width: 4096,
-      height: 4096
+      size: 5,
+      width: 1920,
+      height: 1100
     },
     success: function (file, response) {
       $('form').find('input[name="photo"]').remove()

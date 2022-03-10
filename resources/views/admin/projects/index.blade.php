@@ -29,6 +29,18 @@
                             {{ trans('cruds.project.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.project.fields.client_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.project.fields.location') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.project.fields.type') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.project.fields.date') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.project.fields.photo') }}
                         </th>
                         <th>
@@ -47,6 +59,18 @@
                             </td>
                             <td>
                                 {{ $project->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $project->client_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $project->location ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\Project::TYPE_SELECT[$project->type] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $project->date ?? '' }}
                             </td>
                             <td>
                                 @if($project->photo)

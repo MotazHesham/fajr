@@ -21,6 +21,10 @@ class StoreNewsRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'writer_name' => [
+                'string',
+                'required',
+            ],
             'short_description' => [
                 'string',
                 'required',

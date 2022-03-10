@@ -77,6 +77,8 @@ class ServicesController extends Controller
     {
         abort_if(Gate::denies('service_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $service->load('serviceFaQs');
+
         return view('admin.services.show', compact('service'));
     }
 

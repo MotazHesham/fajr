@@ -21,6 +21,17 @@
                 <span class="help-block">{{ trans('cruds.news.fields.title_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="writer_name">{{ trans('cruds.news.fields.writer_name') }}</label>
+                <input class="form-control {{ $errors->has('writer_name') ? 'is-invalid' : '' }}" type="text"
+                    name="writer_name" id="writer_name" value="{{ old('writer_name', $news->writer_name) }}" required>
+                @if ($errors->has('writer_name'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('writer_name') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.news.fields.writer_name_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="short_description">{{ trans('cruds.news.fields.short_description') }}</label>
                 <input class="form-control {{ $errors->has('short_description') ? 'is-invalid' : '' }}" type="text" name="short_description" id="short_description" value="{{ old('short_description', $news->short_description) }}" required>
                 @if($errors->has('short_description'))
@@ -59,7 +70,7 @@
                         {{ $errors->first('photo') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.news.fields.photo_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.news.fields.photo_helper') }}800x400</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
@@ -87,8 +98,8 @@
     },
     params: {
       size: 2,
-      width: 4096,
-      height: 4096
+      width: 800,
+      height: 400
     },
     success: function (file, response) {
       $('form').find('input[name="photo"]').remove()

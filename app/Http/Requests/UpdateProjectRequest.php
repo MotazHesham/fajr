@@ -21,6 +21,21 @@ class UpdateProjectRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'client_name' => [
+                'string',
+                'required',
+            ],
+            'location' => [
+                'string',
+                'required',
+            ],
+            'type' => [
+                'required',
+            ],
+            'date' => [
+                'required',
+                'date_format:' . config('panel.date_format'),
+            ],
             'photo' => [
                 'required',
             ],

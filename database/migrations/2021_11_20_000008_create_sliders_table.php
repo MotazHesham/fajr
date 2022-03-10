@@ -10,7 +10,7 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type');
+            $table->string('abstract')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

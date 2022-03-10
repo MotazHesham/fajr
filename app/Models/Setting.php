@@ -18,6 +18,8 @@ class Setting extends Model implements HasMedia
 
     protected $appends = [
         'chairman_img',
+        'about_fajr',
+        'logo',
     ];
 
     protected $dates = [
@@ -51,6 +53,7 @@ class Setting extends Model implements HasMedia
         'our_vision',
         'our_strategy',
         'chairman_word',
+        'crew_text',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -62,9 +65,15 @@ class Setting extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
         $this->addMediaConversion('preview2')->fit('crop', 523, 675);
     }
-public function getPhotoAttribute()
+
+    public function getChairmanImgAttribute()
     {
-        $file = $this->getMedia('photo')->last();
+        return $this->getMedia('chairman_img')->last();
+    }
+
+    public function getAboutFajrAttribute()
+    {
+        $file = $this->getMedia('about_fajr')->last();
         if ($file) {
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
@@ -75,9 +84,16 @@ public function getPhotoAttribute()
         return $file;
     }
 
-    public function getChairmanImgAttribute()
+    public function getLogoAttribute()
     {
-        return $this->getMedia('chairman_img')->last();
+        $file = $this->getMedia('logo')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
     }
 
     protected function serializeDate(DateTimeInterface $date)

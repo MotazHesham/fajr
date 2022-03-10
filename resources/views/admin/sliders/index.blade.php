@@ -29,7 +29,7 @@
                             {{ trans('cruds.slider.fields.photo') }}
                         </th>
                         <th>
-                            {{ trans('cruds.slider.fields.type') }}
+                            {{ trans('cruds.slider.fields.abstract') }}
                         </th>
                         <th>
                             &nbsp;
@@ -53,7 +53,7 @@
                                 @endif
                             </td>
                             <td>
-                                {{ App\Models\Slider::TYPE_SELECT[$slider->type] ?? '' }}
+                                {{ $slider->abstract?? '' }}
                             </td>
                             <td>
                                 @can('slider_show')

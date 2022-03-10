@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroySettingRequest;
@@ -15,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 class SettingsController extends Controller
 {
     use MediaUploadingTrait;
+
     public function index()
     {
         abort_if(Gate::denies('setting_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -35,6 +37,22 @@ class SettingsController extends Controller
     {
         $setting = Setting::create($request->all());
 
+        if ($request->input('chairman_img', false)) {
+            $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('chairman_img'))))->toMediaCollection('chairman_img');
+        }
+
+        if ($request->input('about_fajr', false)) {
+            $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('about_fajr'))))->toMediaCollection('about_fajr');
+        }
+
+        if ($request->input('logo', false)) {
+            $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('logo'))))->toMediaCollection('logo');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $setting->id]);
+        }
+
         return redirect()->route('admin.settings.index');
     }
 
@@ -47,7 +65,6 @@ class SettingsController extends Controller
 
     public function update(UpdateSettingRequest $request, Setting $setting)
     {
-        
         $setting->update($request->all());
 
         if ($request->input('chairman_img', false)) {
@@ -61,7 +78,29 @@ class SettingsController extends Controller
             $setting->chairman_img->delete();
         }
 
-        return redirect()->route('admin.settings.edit',$setting->id);
+        if ($request->input('about_fajr', false)) {
+            if (!$setting->about_fajr || $request->input('about_fajr') !== $setting->about_fajr->file_name) {
+                if ($setting->about_fajr) {
+                    $setting->about_fajr->delete();
+                }
+                $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('about_fajr'))))->toMediaCollection('about_fajr');
+            }
+        } elseif ($setting->about_fajr) {
+            $setting->about_fajr->delete();
+        }
+
+        if ($request->input('logo', false)) {
+            if (!$setting->logo || $request->input('logo') !== $setting->logo->file_name) {
+                if ($setting->logo) {
+                    $setting->logo->delete();
+                }
+                $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('logo'))))->toMediaCollection('logo');
+            }
+        } elseif ($setting->logo) {
+            $setting->logo->delete();
+        }
+
+        return redirect()->route('admin.settings.index');
     }
 
     public function show(Setting $setting)
@@ -86,6 +125,7 @@ class SettingsController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
     public function storeCKEditorImages(Request $request)
     {
         abort_if(Gate::denies('setting_create') && Gate::denies('setting_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

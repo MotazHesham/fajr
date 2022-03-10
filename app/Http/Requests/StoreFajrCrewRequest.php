@@ -17,7 +17,8 @@ class StoreFajrCrewRequest extends FormRequest
     public function rules()
     {
         return [
-            'description' => [
+            'name' => [
+                'string',
                 'required',
             ],
             'types.*' => [
@@ -26,6 +27,13 @@ class StoreFajrCrewRequest extends FormRequest
             'types' => [
                 'required',
                 'array',
+            ],
+            'job_name' => [
+                'string',
+                'required',
+            ],
+            'photo' => [
+                'required',
             ],
         ];
     }

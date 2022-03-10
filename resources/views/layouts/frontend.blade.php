@@ -1,441 +1,245 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <!--====== Required meta tags ======-->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--====== Title ======-->
+        <title>فجر الجنوب</title>
+        <!--====== Favicon Icon ======-->
+        <link rel="shortcut icon" href="{{asset('frontend/assets/images/favicon.ico')}}" type="image/png">
+        <!--====== Bootstrap css ======-->
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
+        <!--====== Flaticon css ======-->
+        <link rel="stylesheet" href="{{asset('frontend/assets/fonts/flaticon/flaticon.css')}}">
+        <!--====== Iconfont css ======-->
+        <link rel="stylesheet" href="{{asset('frontend/assets/fonts/icofont/icofont.css')}}">
+        <!--====== Gilory css ======-->
+        <link rel="stylesheet" href="{{asset('frontend/assets/fonts/gilory/gilory.css')}}">
+        <!--====== Magnific Popup css ======-->
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/magnific-popup.css')}}">
+        <!--====== Slick css ======-->
+        <link rel="stylesheet"href="{{asset('frontend/assets/css/slick.css')}}">
+        <!--====== nice-select css ======-->
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/nice-select.css')}}">
+        <!--====== Default css ======-->
+        <link rel="stylesheet"href="{{asset('frontend/assets/css/default.css')}}">
+        <!--====== Style css ======-->
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}">
 
-<head>
-    <title>Fajr</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 
-
-    <!--style css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/style.css')}}">
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-
-    <!---fontawesome--->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/all.css')}}">
-
-    <!---google-font--->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
-        rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
-
-    <!--bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!---owl-carousel---->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
-        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-    <!----google-fonts---->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
-    <!--jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-    <!--java scripts-->
-    <script src="{{ asset('frontend/js/myScript.js')}}"></script>
-    <script type="text/javascript"src="{{ asset('frontend/js/multi-animated-counter.js')}}"></script>
-    @yield('styles')
-</head>
-
-
-
-<body>
-
-    @php
+        @yield('styles')
+    </head>
+    <body>
+        @php
         $setting = \App\Models\Setting::first();
     @endphp
-
-    <div class="main-container">
-        
-        <div class="fixedbar social-media-bar-wrapper">
-          <ul>
-                <li class="twitter">
-                <i class="fab fa-twitter fixed_bar_icon"  aria-hidden="true"></i>
-              <div class="slider">
-                <p><a href="{{$setting->twitter }}" target="_blank">twitter</a></p>
-              </div>
-            </li>
-            <li class="tiktok">
-            <i class="fab fa-tiktok fixed_bar_icon" aria-hidden="true"></i>
-              <div class="slider">
-                <p><a href="{{$setting->tik_tok }}" target="_blank">tiktok</a></p>
-              </div>
-            </li>
-            <li class="instagram">
-            <i class="fab fa-instagram fixed_bar_icon"  aria-hidden="true"></i>
-              <div class="slider">
-                <p><a href="{{$setting->instagram }}"  target="_blank">instagram</a></p>
-              </div>
-            </li>
-            <li class="snapshat">
-                <i class="fab fa-snapchat-ghost fixed_bar_icon" aria-hidden="true"></i>
-              <div class="slider">
-                <p><a href="{{$setting->snapchat }}"  target="_blank">Snapshat</a></p>
-              </div>
-            </li>
-             
-
-          </ul>
-        </div>
-        
-        
-        
-        <header>
-            <div class="top-bar">
-                <div class="container row">
-                    <div class="col-6 top-bar-right">
-                        <div class="row menu-mobile">
-                            <i class="fas fa-bars top-bar-icon hamburger-menu"></i>
-                            <ul class="main-menu-mobile">
-                                @if(request()->is("job")|| request()->is("price"))
-                                <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                               <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                               <li><a href="{{route('frontend.price_application')}}">    طلب خدمة هندسيه </a></li>
-                               @else
-                               <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                               <li><a href="#services">خدماتنا</a></li>
-                               <li><a href="#projects">مشروعاتنا</a></li>
-                               <li><a href="#our-news">أخبارنا</a></li>
-                               <li><a href="#contact-us-section">اتصل بنا</a></li>
-                               <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                               <li><a href="{{route('frontend.price_application')}}">   طلب خدمة هندسيه</a></li>
-   
-                               @endif
-                            </ul>
-                        </div>
-                        <a href="{{ $setting->instagram ?? ''}}"><i class="fab fa-instagram top-bar-icon"></i></a>
-                        <a href="{{ $setting->twitter ?? ''}}"><i class="fab fa-twitter top-bar-icon"></i></a>
-                        <a href="{{ $setting->facebook ?? ''}}"><i class="fab fa-facebook-square top-bar-icon"></i></a>
-                    </div>
-                    <div class="col-6 top-bar-left">
-                        <a href="mailto:{{ $setting->email ?? ''}}"><img class="mail-icon" src="{{ asset('frontend/img/mail.png')}}"></a>
-                        <a class="mail-link" href="mailto:{{ $setting->email ?? ''}}">{{ $setting->email ?? ''}}</a>
-                    </div>
-                </div>
+        <!--====== Start Preloader ======-->
+        <div class="preloader">
+            <div class="lds-ellipsis">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div class="main-header">
-                <div class="container row">
-                    <div class="col-8 main-header-right">
-                        <div class="logo-container"><a href="{{ route('frontend.home') }}"><img class="logo"
-                                    src="{{ asset('frontend/img/logo.jpg')}}"></a></div>
-                        <ul class="main-menu menu-desktop">
-                             @if(request()->is("job")|| request()->is("price"))
-                             <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                                      <li><a href="{{ route('frontend.home') }}#services">خدماتنا</a></li>
-                                <li><a href="{{ route('frontend.home') }}#projects">مشروعاتنا</a></li>
-                                <li><a href="{{ route('frontend.home') }}#our-news">أخبارنا</a></li>
-                                <li><a href="{{ route('frontend.home') }}#contact-us-section">اتصل بنا</a></li>
-                            <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                            <li><a href="{{route('frontend.price_application')}}">طلب خدمة هندسيه</a></li>
-                            @else
-                            <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                            <li><a href="#services">خدماتنا</a></li>
-                            <li><a href="#projects">مشروعاتنا</a></li>
-                            <li><a href="#our-news">أخبارنا</a></li>
-                            <li><a href="#contact-us-section">اتصل بنا</a></li>
-                            <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                            <li><a href="{{route('frontend.price_application')}}">طلب خدمة هندسيه </a></li>
-
-                            @endif
-                        
-                        </ul>
-                    </div>
-                    <div class="col-4 main-header-left">
-                        <div>
-                            <a class="main-header-number" href="tel:{{$setting->phone ?? ''}}">{{$setting->phone ?? ''}}</a>
-                            <a href="https://wa.link/p9p8hy" target="_blank"><img style="width: 50px;" src="{{ asset('frontend/img/Image%202.png')}}"></a>
+        </div><!--====== End Preloader ======-->
+       <!--====== Start Header ======-->
+          <header class="header-area header-area-v1">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="top-left">
+                             <div class="site-branding">
+                                    <div class="brand-logo">
+                                        <a href="{{ route('frontend.home') }}"><img src="frontend/assets/images/logo-1.png" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            
+                          
+                            <div class="top-left custom-container pt-20">
+                                    
+                                     <div class="nav-button float-left">
+                                  <!--  <a  href="{{route('frontend.request')}}" class="main-btn"> طلب عرض خدمة   </a>-->
+                                    <a  href="{{route('#')}}" class="main-btn"> طلب عرض خدمة   </a>
+                                </div>
+                            
+                                <div class="header-phone float-left pl-20"><i class="icofont-ui-call"></i>{{$setting->phone ?? ''}}</div>
+                           
+                                
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row menu-tablet">
-                <ul class="main-menu">
-                  lass="main-menu menu-desktop">
-                             @if(request()->is("job")|| request()->is("price"))
-                             <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                                      <li><a href="{{ route('frontend.home') }}#services">خدماتنا</a></li>
-                                <li><a href="{{ route('frontend.home') }}#projects">مشروعاتنا</a></li>
-                                <li><a href="{{ route('frontend.home') }}#our-news">أخبارنا</a></li>
-                                <li><a href="{{ route('frontend.home') }}#contact-us-section">اتصل بنا</a></li>
-                            <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                            <li><a href="{{route('frontend.price_application')}}">  تفديم طلب</a></li>
-                            @else
-                            <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
-                            <li><a href="#services">خدماتنا</a></li>
-                            <li><a href="#projects">مشروعاتنا</a></li>
-                            <li><a href="#our-news">أخبارنا</a></li>
-                            <li><a href="#contact-us-section">اتصل بنا</a></li>
-                            <li><a href="{{route('frontend.job_application')}}"> طلب توظيف</a></li>
-                            <li><a href="{{route('frontend.price_application')}}"> تقديم طلب </a></li>
+            
+                  
+            <div class="header-navigation">
+                <div class="nav-container">
+                    <div class="container">
+                        <div class="row align-items-center">
+                     
+ <div class=" col-12">
+ <div class="nav-menu">
+                                    <!-- Navbar Close Icon -->
+ <div class="navbar-close">
+    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+</div>
+ <nav class="main-menu">
+ <ul>
+ <li class="menu-item"><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
+<li class="menu-item"><a href="{{route('frontend.service')}}">خدماتنا</a></li>
+<li class="menu-item menu-item-has-children"><a href="#">عن فجر الجنوب</a>
+ <ul class="sub-menu">
+<li><a href="{{route('frontend.about')}}">عن الشركة</a></li>
+ <li><a  href="{{route('frontend.vision')}}">الرؤية والرسالة</a></li>
+    <!-- <li><a href="team.html"> فريق العمل</a></li>-->
+     <li><a href="{{route('frontend.management')}}">إدارة الشركة</a></li>
+     <li><a href="{{route('frontend.department')}}">أقسام الشركة </a></li>
+     <li><a href="{{route('frontend.policies')}}"> سياسات الشركة  </a></li>
+     <li><a href="{{route('frontend.tasks')}}"> وصف ومهام </a></li>
+ </ul> </li>
+<li class="menu-item"><a href="{{route('frontend.projects')}}">مشروعتنا</a></li>
+     <li class="menu-item"><a href="{{route('frontend.news')}}">أخبارنا</a></li>
+     <li class="menu-item"><a href="{{route('frontend.crew')}}">الهيكل الوظيفي</a></li>
+     <li class="menu-item"><a href="{{route('frontend.certificates')}}">شهادات وإنجازات</a></li>
+     <li class="menu-item"><a href="{{route('frontend.job_application')}}">طلب توظيف</a></li>
+     <li class="menu-item"><a href="{{route('#')}}">طلب خدمة</a></li>
+     
 
-                            @endif
-                        
-                        </ul>
+ <li class="menu-item"><a href="{{route('frontend.contact')}}">اتصل بنا</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- Navbar Toggler -->
+                                <div class="navbar-toggler float-right">
+                                    <span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </header>
-        <!---------hero-section------>
-             @if(request()->is("/*"))
-        <div id="slider-section" class="container-fluid hero-section">
-            <div class="owl-one owl-carousel owl-theme owl-container">
-                @foreach(\App\Models\Slider::where('type','slider_1')->orderBy('created_at','desc')->get() as $slider)
-                    <div class="item">
-                        <img class="slider-product" src="{{ $slider->photo ? $slider->photo->getUrl() : ''}}">
-                    </div> 
-                @endforeach
-            </div>
-        </div>
-        @endif
-        <!---------hero-section------>
-
+        </header><!--====== End Header ======-->
         @yield('content')
 
         @include('sweetalert::alert')
 
-        <!-----------footer----------->
-        <div class="container-fluid footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 footer-div">
-                        <h4 class="footer-title">شركة فجر الجنوب</h4>
-                        <p class="footer-p"> 
-                            @php
-                            use Illuminate\Support\Str;
-                            $len=Str::length($setting->about_us);
-                            $first = substr($setting->about_us, 0,$len/2 );
-                            $theRest = substr($setting->about_us, $len/2);
-                            @endphp
-                                {{ $first}} 
-                                <span id="dots">...</span>
-                                <span id="more">
-                            {{ $theRest}} 
-                            </p> 
-                        <button class="more-btn" onclick="myFunction2()" id="myBtn">اقرأ المزيد</button>
-                        </p>
-                    </div>
+        <!---------------->
 
-                    <div class="col-lg-2 footer-div">
-                        <h4 class="footer-title">روابط تهمك</h4>
-                        <ul class="footer-list">
-                            <li><a href="{{ route('frontend.home')}}">الرئيسية</a></li>
-                            <li><a href="#who-are-we">من نحن</a></li>
-                            <li><a href="#contact-us-section">تواصل معنا</a></li>
-                            <li><a href="#projects">مشاريعنا</a></li>
-                            <li><a href="#our-news">أخبارنا</a></li>
-                        </ul>
-                    </div>
-                    <div id="contact-us" class="col-lg-4 footer-div">
-                        <h4 class="footer-title">تواصل معنا</h4>
-                        <ul class="footer-list">
-                            <li>
-                                <div class="contact-us-group">
-                                    <a href="tel:{{ $setting->phone ?? '' }}">{{ $setting->phone ?? '' }}</a>
-                                    <i class="fas fa-phone footer-icon"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contact-us-group">
-                                    <a href="mailto:{{ $setting->email ?? ''}}">{{ $setting->email ?? '' }}</a>
-                                    <i class="fas fa-envelope footer-icon"></i>
-                                </div>
-                            </li>
-                             <ul class="social-media2">
-                                <li>
-                                    <div class="contact-us-group">
-                                    <a href="{{ $setting->twitter ?? '' }}">
-                                        <i class="fab fa-twitter footer-icon"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="contact-us-group">
-                                    <a href="{{ $setting->tik_tok ?? '' }}">
-                                        <i class="fab fa-tiktok footer-icon"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="contact-us-group">
-                                    <a href="{{ $setting->instagram ?? '' }}">
-                                       <i class="fab fa-instagram footer-icon"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="contact-us-group">
-                                    <a href="{{ $setting->snapchat ?? '' }}">
-                                        <i class="fab fa-snapchat-ghost  footer-icon"></i></a>
-                                    </div>
-                                </li>
+         <!--====== Start Footer ======-->
+         <footer class="footer-area footer-area-v1 ">
+            <div class="footer-widget pt-120 pb-90">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 col-sm-12">
+                             
+                            <div class="widget about-widget mb-40">
+                                 <h4 class="widget-title">نبذة عنا</h4>
+                                <p> {{$setting->about_us }}
+
+</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="widget widget-categories mb-40">
+                                <h4 class="widget-title"> روابط سريعة</h4>
+                                <ul class="widget-link">
+                                    <li><a href="{{ route('frontend.home') }}">الرئيسية</a></li>
+                                    <li><a href="{{route('frontend.crew')}}">الهيكل الوظيفي</a></li>
+                                    <li><a href="{{route('frontend.certificates')}}">شهادات وإنجازات</a></li>
+                                    <li><a href="{{route('frontend.job_application')}}">طلب توظيف</a></li>
+                                    <li ><a href="{{route('frontend.request')}}">طلب خدمة</a></li>
+                                    <li><a href="{{ route('frontend.service') }}">خدماتنا</a></li>
+                                    <li><a href="{{route('frontend.management')}}">إدارة الشركة</a></li>
+                                    <li><a href="{{route('frontend.department')}}">أقسام الشركة </a></li>
+                                    <li><a href="{{route('frontend.policies')}}"> سياسات الشركة  </a></li>
+                                    <li><a href="{{route('frontend.tasks')}}"> وصف ومهام </a></li>
+                                   
+                                  
+
+                                    
                                 </ul>
-
-                            <li>
-                                <div class="contact-us-group">
-                                    <a href=""> {{ $setting->address ?? '' }}</a>
-                                    <i class="fas fa-map-marker-alt footer-icon"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="widget newsletter-widget mb-40">
+                                <h4 class="widget-title">اشترك الان</h4>
+                                <div class="newsletter-form mb-20">
+                                    <form action="{{ route('frontend.subscription') }}" method="post">
+                                        @csrf
+                                        <div class="form_group">
+                                            <input type="email" class="form_control" placeholder="support24@gmail.com" name="email">
+                                            <button class="newsletter-btn" type="submit"><i class="icofont-arrow-left"></i></button>
+                                        </div>
+                                    </form>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 footer-div">
-                        <h4 class="footer-title">القائمة البريديه</h4>
-                        <ul class="footer-list">
-                            <p class="footer-p2">للاشتراك بالقائمة البريدية
-                                <br>
-                                من فضلك ادخل البريد الالكتروني
-                            </p>
-                            <form action="{{ route('frontend.subscription') }}" method="post">
-                                @csrf
-                                <div class="form-group">
-                                    <input class="email-footer" type="email" class="form-control" id="email"
-                                        name="email">
+                                <div class="newsletter-info">
+                                    <h5>للتواصل السريع</h5>
+                                    <p><a href="tel:{{ $setting->phone ?? '' }}">{{ $setting->phone ?? '' }}</a></p>
                                 </div>
-                                <button type="submit" class="btn btn-default subscribe-btn">اشترك الآن</button>
-                            </form>
-                        </ul>
+                                
+                                
+                                
+                                <ul class="social-link">
+                                    <li><a href="{{ $setting->facebook ?? '' }}"><i class="icofont-facebook"></i></a></li>
+                                    <li><a href="{{ $setting->twitter ?? '' }}"><i class="icofont-twitter"></i></a></li>
+                                    <li><a href="{{ $setting->pinterest ?? '' }}"><i class="icofont-pinterest"></i></a></li>
+                                    <li><a href="{{ $setting->skype ?? '' }}"><i class="icofont-skype"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    
                     </div>
                 </div>
-
             </div>
-        </div>
-        <div class="container-fluid credits">
-            <p>جميع الحقوق محفوظة © 2022 فجر الجنوب - تصميم وبرمجة
-                <a href="https://alliance-sa.com/index_ar">تحالف الرؤى</a>
-            </p>
-        </div>
+            <div class="copyright-area">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="copyright-text text-center">
+                                <p>جميع الحقوق محفوظة © 2022 فجر الجنوب - <span>تصميم وبرمجة تحالف الرؤى</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer><!--====== End Footer ======-->
+        <!--====== back-to-top ======-->
+        <a href="#" class="back-to-top" ><i class="flaticon-up-arrow-angle"></i></a>
+        <!--====== Jquery js ======-->
+        <script src="{{asset('frontend/assets/js/vendor/modernizr-3.6.0.min.js')}}"></script>
+        <script src="{{asset('frontend/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+        <!--====== Bootstrap js ======-->
+        <script src="{{asset('frontend/assets/js/popper.min.js')}}"></script>
+        <script src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
+        <!--====== Slick js ======-->
+        <script src="{{asset('frontend/assets/js/slick.min.js')}}"></script>
+        <!--====== Magnific Popup js ======-->
+        <script src="{{asset('frontend/assets/js/jquery.magnific-popup.min.js')}}"></script>
+        <!--====== Isotope js ======-->
+        <script src="{{asset('frontend/assets/js/isotope.pkgd.min.js')}}"></script>
+        <!--====== Imagesloaded js ======-->
+        <script src="{{asset('frontend/assets/js/imagesloaded.pkgd.min.js')}}"></script>
+        <!--====== nice-select js ======-->
+        <script src="{{asset('frontend/assets/js/jquery.nice-select.min.js')}}"></script>
+        <!--====== counterup js ======-->
+        <script src="{{asset('frontend/assets/js/jquery.counterup.min.js')}}"></script>
+        <!--====== waypoints js ======-->
+        <script src="{{asset('frontend/assets/js/waypoints.min.js')}}"></script>
+        <!--====== Main js ======-->
+        <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 
-        <!-----------footer----------->
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
-
-    </div>
-    <!----end of main container----->
-    <script>
-        var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?24201';
-        var s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = url;
-        var options = {
-            "enabled": true,
-            "chatButtonSetting": {
-                "backgroundColor": "#14c656",
-                "ctaText": "",
-                "borderRadius": "25",
-                "marginLeft": "0",
-                "marginBottom": "50",
-                "marginRight": "20",
-                "position": "right"
-            },
-            "brandSetting": {
-                "brandName": "فجر الجنوب",
-                "brandSubTitle": "Typically replies within a day",
-                "brandImg": "img/logo2.jpg",
-                "welcomeText": "مرحباً بك.\nكيف يمكننا مساعدتك؟",
-                "messageText": "",
-                "backgroundColor": "#0a5f54",
-                "ctaText": "تواصل معنا",
-                "borderRadius": "25",
-                "autoShow": false,
-                "phoneNumber": "+966 50 811 6660"
-            }
-        };
-        s.onload = function() {
-            CreateWhatsappChatWidget(options);
-        };
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(s, x);
-    </script>
-
-    <!----owl-carousel--->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script>
-        $('.owl-one').owlCarousel({
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            nav: true,
-            dots: false,
-            rtl: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 1
-                },
-                1000: {
-                    items: 1
-                }
-            }
-        })
-    </script>
-    <script>
-        $('.owl-two').owlCarousel({
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            nav: false,
-            dots: true,
-            rtl: true,
-            responsive: {
-                0: {
-                    items: 2
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
-                }
-            }
-        })
-    </script>
-
-    <script>
-        $(document.body).click(function() {
-            $(".hamburger-menu").click(function() {
-                $(".main-menu-mobile").stop().slideToggle("slow");
-            });
-        });
-    </script>
-    <script>
-function openTab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-@yield('scripts')
-</body>
-
-</html>
+        @yield('scripts')
+    </body>

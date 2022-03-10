@@ -1,0 +1,59 @@
+/*-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+    CSS INDEX
+    ===================
+
+    01. Theme default css
+	02. Header css
+    03. Hero css
+    04. About css
+    05. Service css
+    06. Features css
+    07. Project css
+    08. Testimonial css
+    09. Team css
+    10. Blog css
+    11. Contact css
+    12. Footer css
+
+-----------------------------------------------------------------------------------*/
+
+@import 'variables';
+@import 'mixin';
+
+//--====== Default css ======--//
+@import 'common';
+
+//--====== Header css ======--//
+@import 'header';
+
+//--====== Hero css ======--//
+@import 'hero';
+
+//--====== About css ======--//
+@import 'about';
+
+//--====== Service css ======--//
+@import 'service';
+
+//--====== Features css ======--//
+@import 'features';
+
+//--====== gallery css ======--//
+@import 'project';
+
+//--====== Testimonial css ======--//
+@import 'testimonial';
+
+//--====== Shop css ======--//
+@import 'team';
+
+//--====== Blog css ======--//
+@import 'blog';
+
+//--====== Contact css ======--//
+@import 'contact';
+
+//--====== Footer css ======--//
+@import 'footer';

@@ -40,6 +40,11 @@ class Service extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function serviceFaQs()
+    {
+        return $this->hasMany(FaQ::class, 'service_id', 'id');
+    }
+
     public function getPhotoAttribute()
     {
         $file = $this->getMedia('photo')->last();

@@ -19,7 +19,8 @@ class serviceController extends Controller
 
     public function show($id){
       
-        $service=Service::findOrfail($id)->with('serviceFaQs');
+        $service=Service::findOrfail($id);
+       $service->load('serviceFaQs');
         $services=Service::get();
         
         return view('frontend.service_details',compact('service','services'));

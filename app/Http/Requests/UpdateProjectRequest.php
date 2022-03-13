@@ -39,6 +39,9 @@ class UpdateProjectRequest extends FormRequest
             'photo' => [
                 'required',
             ],
+            'photos' => [
+                'array',
+            ],
         ];
     }
 }

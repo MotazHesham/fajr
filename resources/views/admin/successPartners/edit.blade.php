@@ -29,7 +29,7 @@
                         {{ $errors->first('company_img') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.successPartner.fields.company_img_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.successPartner.fields.company_img_helper') }}120x120</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
@@ -57,8 +57,8 @@
     },
     params: {
       size: 2,
-      width: 4096,
-      height: 4096
+      width: 120,
+      height: 120
     },
     success: function (file, response) {
       $('form').find('input[name="company_img"]').remove()

@@ -41,6 +41,10 @@ class ProjectsController extends Controller
             $project->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
         }
 
+        foreach ($request->input('photos', []) as $file) {
+            $project->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('photos');
+        }
+
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $project->id]);
         }
@@ -68,6 +72,20 @@ class ProjectsController extends Controller
             }
         } elseif ($project->photo) {
             $project->photo->delete();
+        }
+
+        if (count($project->photos) > 0) {
+            foreach ($project->photos as $media) {
+                if (!in_array($media->file_name, $request->input('photos', []))) {
+                    $media->delete();
+                }
+            }
+        }
+        $media = $project->photos->pluck('file_name')->toArray();
+        foreach ($request->input('photos', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $project->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('photos');
+            }
         }
 
         return redirect()->route('admin.projects.index');

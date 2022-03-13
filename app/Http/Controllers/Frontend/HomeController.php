@@ -31,7 +31,7 @@ class HomeController
         $sections = Section::get()->take(10);
         $management = Management::get()->take(10);
         $descriptions = Description::with(['media'])->get()->take(4);
-        $successPartners = SuccessPartner::with(['media'])->get()->take(5);
+        $successPartners = SuccessPartner::with(['media'])->get();
         $services = Service::with(['media'])->get();
         $sliders=Slider::orderBy('created_at','desc')->get();
         $saids=SaidAboutUs::get();
@@ -97,6 +97,14 @@ class HomeController
    $certificates=Certificate::with(['media'])->paginate(12);
 
    return view('frontend.certificates',compact('certificates'));
+
+   }
+
+   public function management(){
+    
+    $management=Management::get();
+
+    return view('frontend.management',compact('management'));
 
    }
 

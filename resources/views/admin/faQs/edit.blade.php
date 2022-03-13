@@ -45,17 +45,6 @@
                 <span class="help-block">{{ trans('cruds.faQ.fields.service_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="photo">{{ trans('cruds.faQ.fields.photo') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
-                </div>
-                @if($errors->has('photo'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('photo') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.faQ.fields.photo_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

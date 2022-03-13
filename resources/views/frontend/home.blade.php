@@ -16,7 +16,7 @@
 
                                         </h1>
                                     <h4>{{$slider->abstract }}</h4>
-                                    <a href="#" class="main-btn">المزيد</a>
+                                    <a href="{{route('frontend.about')}}" class="main-btn">المزيد</a>
                                 </div>
                             </div>
                             <div class="col-lg-3"></div>
@@ -33,8 +33,8 @@
                 <div class="row no-gutters">
                @foreach ($services as $service )
                @php
-               if($service->photo)
-                 $service_image=$service->photo->geturl();
+               if($service->icon)
+                 $service_image=$service->icon->geturl('icon');
                else
                $service_image= asset('frontend/img/service-icon1.png');
              
@@ -46,7 +46,7 @@
                                 <img src="{{   $service_image }}" width="80">
                             </div>
                             <div class="features-content">
-                                <h5>{{$service->name }}</h5>
+                                   <a href="{{route('frontend.service-details',$service->id)}}"> <h5>{{$service->name }}</h5></a>
                                 <p>
                                     {{$service->description }}                </p>
                             </div>
@@ -62,13 +62,14 @@
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="about-img-box">
-                            @php
-                            /* if($setting->chairman_img)
-                             $img=$setting->chairman_img->getUrl('preview2');
-                             else*/
-                             $img=asset('frontend/assets/images/about/about-1.png');
-                         
-                             @endphp
+                                   @php
+                    if($setting->chairman_img)
+                    $img=$setting->chairman_img->getUrl('preview3');
+                    else
+                    $img=asset('frontend/assets/images/about/about-1.png');
+                
+                    @endphp
+                            
                             <img src="{{ $img }}" alt="">
                         </div>
                     </div>
@@ -129,9 +130,9 @@
          <!--====== Start Project-area section ======-->
         <section class="project-area-v1  pb-90">
             <div class="project-main-section">
-                <div class="project-bg " style="background-image: url(frontend/assets/images/bg/project-bg-1.jpg);"></div>
+                <div class="project-bg " style="background-image: url(public/frontend/assets/images/bg/project-bg-1.jpg);"></div>
                 <div class="container">
-                    <div class="col-lg-8">
+                    <div class="col-lg-4">
                         <div class="section-title section-white-title mb-80 text-right">
                             <h2>مشروعتنا</h2>
                         </div>
@@ -143,7 +144,7 @@
                 <div class="container">
                     <div class="row project-slide-one">
                         @foreach ($projects as $project )
-                        <div class="col-lg-4">
+                        <div class="col-lg-8">
                             <div class="project-item">
                                 <div class="project-img">
                                     <img src="{{ $project->photo ? $project->photo->getUrl('preview2') : ''}}">
@@ -170,7 +171,7 @@
         </section><!--====== End Project-area section ======-->
        
           <!--====== Start Testimonial Section ======-->
-        <section class="testimonial-area-v2 bg_cover pt-105 pb-120" style="background-image: url(frontend/assets/images/bg/service-bg-1.jpg); direction: ltr;">
+       <!-- <section class="testimonial-area-v2 bg_cover pt-105 pb-120" style="background-image: url(public/frontend/assets/images/bg/service-bg-1.jpg); direction: ltr;">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -209,7 +210,7 @@
            
                 </div>
             </div>
-        </section><!--====== End Testimonial Section ======-->
+        </section>--><!--====== End Testimonial Section ======-->
            <!--====== Start Sponsor Section ======-->
         <section class="awards-area bg_cover" style="direction: ltr;">
             <div class="container">
@@ -219,7 +220,7 @@
                         <div class="awards-slide">
                             @foreach($successPartners as $key => $successPartner)
                             <div class="single-awards">
-                                <a href="{{ $successPartner->company_img->getUrl('preview2') }}"><img src="{{ $successPartner->company_img->getUrl('preview2') }}" alt=""></a>
+                                <a href="{{ $successPartner->company_img->getUrl('preview2') }}"><img src="{{ $successPartner->company_img->getUrl('preview') }}" alt=""></a>
                             </div>
                              @endforeach
                         </div>

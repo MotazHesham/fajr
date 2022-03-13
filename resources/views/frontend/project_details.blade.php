@@ -2,7 +2,19 @@
 
 @section('content')
   <!--====== Start breadcrumbs section ======-->
-  <section class="breadcrumbs-section bg_cover" style="background-image: url(frontend/assets/images/bg/breadcrumbs-bg.jpg);">
+  @php
+    $setting=\App\Models\Setting::first();
+    if($setting->logo)
+    
+    $back_image=$setting->logo->getUrl('');
+    
+    else
+    
+     $back_image=asset('frontend/assets/images/bg/breadcrumbs-bg.jpg');
+    
+    
+  @endphp
+  <section class="breadcrumbs-section bg_cover" style="background-image: url({{  $back_image}});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -62,34 +74,15 @@
                         <div class="col-lg-12">
                            
                             <div class="row project-slide-four mb-40">
+                                @foreach($project->photos as $key => $media)
                                 <div class="col-lg-4">
                                     <div class="project-item">
                                         <div class="project-img">
-                                            <img src="assets/images/project/single-project-2.jpg" alt="">
+                                            <img src="{{ $media->getUrl('preview4') }}" alt="">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="project-item">
-                                        <div class="project-img">
-                                            <img src="assets/images/project/single-project-3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="project-item">
-                                        <div class="project-img">
-                                            <img src="assets/images/project/single-project-4.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="project-item">
-                                        <div class="project-img">
-                                            <img src="assets/images/project/single-project-3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
+                              @endforeach
                             </div>
                         </div>
                     </div>
@@ -98,7 +91,7 @@
             </div>
         </div>
         
-        <div class="post-next-prev-post">
+        <!--<div class="post-next-prev-post">
             <div class="row">
                 <div class="col-6">
                     <a href="project-details.html" class="post-nav-img post-prev-img">
@@ -113,7 +106,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </section>
 

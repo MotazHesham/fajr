@@ -1,7 +1,19 @@
 @extends('layouts.frontend')
 
 @section('content')
-<section class="breadcrumbs-section bg_cover" style="background-image: url(frontend/assets/images/bg/breadcrumbs-bg.jpg);">
+  @php
+    $setting=\App\Models\Setting::first();
+    if($setting->logo)
+    
+    $back_image=$setting->logo->getUrl('');
+    
+    else
+    
+     $back_image=asset('frontend/assets/images/bg/breadcrumbs-bg.jpg');
+    
+    
+  @endphp
+  <section class="breadcrumbs-section bg_cover" style="background-image: url({{  $back_image}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
@@ -24,8 +36,8 @@
                 <div class="service-details-wrapper">
                     <div class="service-img">
                   @php
-                       if($service->photo)
-                          $service_image=$service->photo->geturl();
+                   if($service->photo)
+                          $service_image=$service->photo->geturl('preview2');
                        else
                           $service_image= asset('frontend/assets/images/service/single-service-1.jpg');
                   @endphp
@@ -47,20 +59,36 @@
                             <h3>أسئلة متكررة</h3>
                             <div class="accordion" id="accordiontwo">
 
-                                @foreach ($service->serviceFaQs as $row )
-                                <div class="card mb-30">
-                                    <a class="collapsed card-header" id="heading1" href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                       ؟{{$row->question }}<span class="toggle_btn"></span>
-                                    </a>
-                                    <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordiontwo">
-                                        <div class="card-body">
-                                            <p>{{$row->answer }}
+                                @foreach ($service->serviceFaQs as $key =>$row)
+                                     @if($key==0)
+                <div class="card mb-30">
+                    <a class="collapsed card-header" id="heading1" href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                       {{$row->question }}<span class="toggle_btn">
+                        </span>
+                    </a>
+                    <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordiontwo">
+                        <div class="card-body">
+                            <p>{{$row->answer }}
 </p>
-                                        </div>
-                                    </div>
-                                </div>
-                          
-                      @endforeach
+                        </div>
+                    </div>
+                </div>
+         @else
+         <div class="card mb-30">
+            <a class="collapsed card-header" id="heading{{$key+1}}" href="#" data-toggle="collapse" data-target="#collapse{{$key+1}}" aria-expanded="false" aria-controls="collapse{{$key+1}}">
+               {{$row->question }}<span class="toggle_btn"></span>
+            </a>
+            <div id="collapse{{$key+1}}" class="collapse" aria-labelledby="heading{{$key+1}}" data-parent="#accordiontwo">
+                <div class="card-body">
+                    <p>{{$row->answer }}
+</p>
+                </div>
+            </div>
+        </div>      
+        @endif 
+
+@endforeach
+         
                             </div>
                         </div>
                     </div>

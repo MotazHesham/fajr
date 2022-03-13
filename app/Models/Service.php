@@ -18,6 +18,7 @@ class Service extends Model implements HasMedia
 
     protected $appends = [
         'photo',
+        'icon',
     ];
 
     protected $dates = [
@@ -38,6 +39,8 @@ class Service extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
+        $this->addMediaConversion('preview2')->fit('crop', 800, 410);
+        $this->addMediaConversion('icon')->fit('crop', 60, 60);
     }
 
     public function serviceFaQs()
@@ -52,6 +55,19 @@ class Service extends Model implements HasMedia
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
             $file->preview   = $file->getUrl('preview');
+            $file->preview2   = $file->getUrl('preview2');
+        }
+
+        return $file;
+    }
+
+    public function getIconAttribute()
+    {
+        $file = $this->getMedia('icon')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->icon   = $file->getUrl('icon');
         }
 
         return $file;

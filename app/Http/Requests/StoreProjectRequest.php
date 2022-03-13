@@ -39,6 +39,9 @@ class StoreProjectRequest extends FormRequest
             'photo' => [
                 'required',
             ],
+            'photos' => [
+                'array',
+            ],
         ];
     }
 }

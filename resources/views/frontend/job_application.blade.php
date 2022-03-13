@@ -1,11 +1,20 @@
 @extends('layouts.frontend')
-@section('styles')
-    <link rel="stylesheet" href="{{asset('frontend/assets/j-forms.css')}}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
-@endsection
 
 @section('content')
-<section class="breadcrumbs-section bg_cover" style="background-image: url(frontend/assets/images/bg/breadcrumbs-bg.jpg);">
+  <!--====== Start breadcrumbs section ======-->
+  @php
+    $setting=\App\Models\Setting::first();
+    if($setting->logo)
+    
+    $back_image=$setting->logo->getUrl('');
+    
+    else
+    
+     $back_image=asset('frontend/assets/images/bg/breadcrumbs-bg.jpg');
+    
+    
+  @endphp
+  <section class="breadcrumbs-section bg_cover" style="background-image: url({{  $back_image}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">

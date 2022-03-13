@@ -1,8 +1,20 @@
 @extends('layouts.frontend')
 
 @section('content')
-      <!--====== Start breadcrumbs section ======-->
-      <section class="breadcrumbs-section bg_cover" style="background-image: url(frontend/assets/images/bg/breadcrumbs-bg.jpg);">
+  <!--====== Start breadcrumbs section ======-->
+  @php
+    $setting=\App\Models\Setting::first();
+    if($setting->logo)
+    
+    $back_image=$setting->logo->getUrl('');
+    
+    else
+    
+     $back_image=asset('frontend/assets/images/bg/breadcrumbs-bg.jpg');
+    
+    
+  @endphp
+  <section class="breadcrumbs-section bg_cover" style="background-image: url({{  $back_image}});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">

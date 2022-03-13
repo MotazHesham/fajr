@@ -53,6 +53,7 @@ class Project extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
         $this->addMediaConversion('preview2')->fit('crop', 427, 427);
         $this->addMediaConversion('preview3')->fit('crop', 1170, 500);
+        $this->addMediaConversion('preview4')->fit('crop', 370, 350);
     }
 
     public function getDateAttribute($value)
@@ -77,6 +78,17 @@ class Project extends Model implements HasMedia
         }
 
         return $file;
+    }
+    public function getPhotosAttribute()
+    {
+        $files = $this->getMedia('photos');
+        $files->each(function ($item) {
+            $item->url = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+            $item->preview4 = $item->getUrl('preview4');
+        });
+
+        return $files;
     }
 
     protected function serializeDate(DateTimeInterface $date)

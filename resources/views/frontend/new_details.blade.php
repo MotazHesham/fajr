@@ -2,7 +2,19 @@
 
 @section('content')
   <!--====== Start breadcrumbs section ======-->
-  <section class="breadcrumbs-section bg_cover" style="background-image: url(frontend/assets/images/bg/breadcrumbs-bg.jpg);">
+  @php
+    $setting=\App\Models\Setting::first();
+    if($setting->logo)
+    
+    $back_image=$setting->logo->getUrl('');
+    
+    else
+    
+     $back_image=asset('frontend/assets/images/bg/breadcrumbs-bg.jpg');
+    
+    
+  @endphp
+  <section class="breadcrumbs-section bg_cover" style="background-image: url({{  $back_image}});">
     <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -24,12 +36,12 @@
                 <div class="col-lg-8">
                     <div class="blog-details-wrapper mb-40">
                         <div class="post-thumbnail">
-                            <img mg src="{{ $new->photo ? $new->photo->getUrl('preview3') : '' }}" alt="">
+                            <img  src="{{ $new->photo ? $new->photo->getUrl('preview3') : '' }}" alt="">
                         </div>
                         <div class="entry-content">
                             <div class="post-meta d-flex justify-content-between">
                                 <ul class="meta-link">
-                                    <li><span><i class="icofont-user-alt-7"></i><a href="#"> {{$new->weiter_name }} </a></span></li>
+                                    <li><span><i class="icofont-user-alt-7"></i><a href="#"> {{$new->writer_name }} </a></span></li>
                                     <li><span><i class="icofont-ui-calendar"></i><a href="#">{{$new->date }} </a></span></li>
                                 </ul>
                                
@@ -47,21 +59,28 @@
                                     $next=$new->id+1;
                                     
                                     @endphp
+                                    @foreach($news as $raw)
+                                    @if($raw->id==  $prev)
                                     <div class="col-6">
                                         @if($prev!=0)
                                     <a href="{{route('frontend.new_details',$prev) }}"class="post-nav-img post-prev-img">
-                                        <img src="{{ asset('frontend/assets/images/prev-img.jpg') }}" alt="">
+                                        <img  src="{{ $raw->photo ? $raw->photo->getUrl('') : '' }}" alt="">
                                         <i class="icofont-arrow-right"></i>
                                     </a>
                                     @endif     
                                 </div>
-                             
+                                @endif
+                                @endforeach
+                                @foreach($news as $raw)
+                                    @if($raw->id==  $next)
                                 <div class="col-6">
                                     <a href="{{route('frontend.new_details',$next) }}" class="post-nav-img post-next-img">
-                                        <img  src="{{ asset('frontend/assets/images/next-img.jpg')}}" alt="">
+                                        <img  src="{{ $raw->photo ? $raw->photo->getUrl('') : '' }}" alt="">
                                         <i class="icofont-arrow-left"></i>
                                     </a>
                                 </div>
+                                @endif
+                                @endforeach
                             </div>
                         </div>
                        

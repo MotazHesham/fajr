@@ -1,7 +1,19 @@
 @extends('layouts.frontend')
 
 @section('content')
-<section class="breadcrumbs-section bg_cover" style="background-image: url(frontend/assets/images/bg/breadcrumbs-bg.jpg);">
+  @php
+    $setting=\App\Models\Setting::first();
+    if($setting->logo)
+    
+    $back_image=$setting->logo->getUrl('');
+    
+    else
+    
+     $back_image=asset('frontend/assets/images/bg/breadcrumbs-bg.jpg');
+    
+    
+  @endphp
+  <section class="breadcrumbs-section bg_cover" style="background-image: url({{  $back_image}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
@@ -20,32 +32,31 @@
     <div class="container">
         <div class="row no-gutters">
        
-            @foreach ($services as $service )
-            @php
-            if($service->photo)
-              $service_image=$service->photo->geturl();
-            else
-            $service_image= asset('frontend/img/service-icon1.png');
-          
-          @endphp
-            <div class="features-column col-lg-4 col-md-6 col-sm-12">
-                <div class="features-i3tem text-center">
-                    <a href="{{route('frontend.service-details',$service->id)}}">
-                    <div class="features-icon">
-                        <i class="flaticon-manufacture"></i>
+           @foreach ($services as $service )
+               @php
+               if($service->icon)
+                 $service_image=$service->icon->geturl('icon');
+               else
+               $service_image= asset('frontend/img/service-icon1.png');
+             
+             @endphp
+                    <div class="features-column col-lg-4 col-md-6 col-sm-12">
+                        <div class="features-item text-center">
+                            
+                            <div class="features-icon">
+                           
+                                <img src="{{   $service_image }}" width="80">
+                            </div>
+                            <div class="features-content">
+                               <a href="{{route('frontend.service-details',$service->id)}}"> <h5>{{$service->name }}</h5></a>
+                                          <p>
+                                    {{$service->description }}                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="features-content">
-                        <h5>{{$service->name }}</h5>
-                        <p>   {{$service->description }}  
-                  </p>
-                    </div>
-                        </a>
+                    @endforeach
                 </div>
             </div>
-             
-            @endforeach
-        </div>
-    </div>
-</section>
+        </section><!--====== End FEatures section ======-->
 
  @endsection

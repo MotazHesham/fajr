@@ -41,9 +41,14 @@ class ServicesController extends Controller
             $service->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
         }
 
+        if ($request->input('icon', false)) {
+            $service->addMedia(storage_path('tmp/uploads/' . basename($request->input('icon'))))->toMediaCollection('icon');
+        }
+
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $service->id]);
         }
+
 
         return redirect()->route('admin.services.index');
     }
@@ -69,6 +74,18 @@ class ServicesController extends Controller
         } elseif ($service->photo) {
             $service->photo->delete();
         }
+
+        if ($request->input('icon', false)) {
+            if (!$service->icon || $request->input('icon') !== $service->icon->file_name) {
+                if ($service->icon) {
+                    $service->icon->delete();
+                }
+                $service->addMedia(storage_path('tmp/uploads/' . basename($request->input('icon'))))->toMediaCollection('icon');
+            }
+        } elseif ($service->icon) {
+            $service->icon->delete();
+        }
+
 
         return redirect()->route('admin.services.index');
     }

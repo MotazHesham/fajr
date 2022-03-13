@@ -35,6 +35,9 @@
                             {{ trans('cruds.service.fields.photo') }}
                         </th>
                         <th>
+                            {{ trans('cruds.service.fields.icon') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -58,6 +61,13 @@
                                 @if($service->photo)
                                     <a href="{{ $service->photo->getUrl() }}" target="_blank" style="display: inline-block">
                                         <img src="{{ $service->photo->getUrl('thumb') }}">
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
+                                @if($service->icon)
+                                    <a href="{{ $service->icon->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $service->icon->getUrl('thumb') }}">
                                     </a>
                                 @endif
                             </td>

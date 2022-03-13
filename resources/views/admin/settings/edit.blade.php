@@ -241,7 +241,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.our_strategy_helper') }}</span>
             </div>
-            <div class="form-group col-md-4">
+                <div class="form-group col-md-4">
                 <label for="chairman_img">{{ trans('cruds.setting.fields.chairman_img') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('chairman_img') ? 'is-invalid' : '' }}" id="chairman_img-dropzone">
                 </div>
@@ -250,7 +250,7 @@
                         {{ $errors->first('chairman_img') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.setting.fields.chairman_img_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.setting.fields.chairman_img_helper') }}470x518</span>
             </div>
             <div class="form-group col-md-4">
                 <label class="required" for="chairman_word">{{ trans('cruds.setting.fields.chairman_word') }}</label>
@@ -261,7 +261,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.chairman_word_helper') }}</span>
-            </div>
             </div>
             <div class="form-group col-md-4">
                 <label for="about_fajr">{{ trans('cruds.setting.fields.about_fajr') }}</label>
@@ -295,6 +294,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.crew_text_helper') }}</span>
             </div>
+            </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
@@ -311,14 +311,17 @@
 <script>
     Dropzone.options.chairmanImgDropzone = {
     url: '{{ route('admin.settings.storeMedia') }}',
-    maxFilesize: 20, // MB
+    maxFilesize: 4, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 20
+      size: 4,
+      width: 470,
+      height: 518
     },
     success: function (file, response) {
       $('form').find('input[name="chairman_img"]').remove()
@@ -335,27 +338,28 @@
 @if(isset($setting) && $setting->chairman_img)
       var file = {!! json_encode($setting->chairman_img) !!}
           this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, file.preview)
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="chairman_img" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },
-     error: function (file, response) {
-         if ($.type(response) === 'string') {
-             var message = response //dropzone sends it's own error messages in string
-         } else {
-             var message = response.errors.file
-         }
-         file.previewElement.classList.add('dz-error')
-         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-         _results = []
-         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-             node = _ref[_i]
-             _results.push(node.textContent = message)
-         }
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
 
-         return _results
-     }
+        return _results
+    }
 }
 </script>
 <script>

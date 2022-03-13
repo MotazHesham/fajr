@@ -1,10 +1,5 @@
 @extends('layouts.frontend')
-@section('scripts')
-@parent
-<script src="/js/mapInput.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initAutocomplete&language=ar&region=SA
-     async defer"></script>
-@stop
+
 @section('styles')
     
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
@@ -13,7 +8,19 @@
 @endsection
 @section('content')
   <!--====== Start breadcrumbs section ======-->
-  <section class="breadcrumbs-section bg_cover" style="background-image: url(frontend/assets/images/bg/breadcrumbs-bg.jpg);">
+  @php
+    $setting=\App\Models\Setting::first();
+    if($setting->logo)
+    
+    $back_image=$setting->logo->getUrl('');
+    
+    else
+    
+     $back_image=asset('frontend/assets/images/bg/breadcrumbs-bg.jpg');
+    
+    
+  @endphp
+  <section class="breadcrumbs-section bg_cover" style="background-image: url({{$back_image}});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -85,18 +92,18 @@
                                             <input type="text" class="form_control" placeholder="العنوان" name="address" required>
                                         </div>
                                     </div>
-                                  
+                                  <br>
                                     <div class="col-lg-12">
                                         <div class="form_group">
-                                    <select name="service" id="service" required>
-                                        <option style="direction: rtl;" value disabled {{ old('service', null) === null ? 'selected' : '' }}>برجاء اختيار نوع الخدمة المطلوبه</option>
+                                    <select  class="form_control" name="service" id="service" required  style=" text-align:right;" >
+                                        <option style=" text-align:left;" value disabled {{ old('service', null) === null ? 'selected' : '' }}>برجاء اختيار نوع الخدمة المطلوبه</option>
                                         @foreach(App\Models\Service::get() as $key => $label)
-                                            <option value="{{$label->name }}" {{ old('service', '') === (string) $key ? 'selected' : '' }}>{{ $label->name }}</option>
+                                            <option  style=" text-align:left;" value="{{$label->name }}" {{ old('service', '') === (string) $key ? 'selected' : '' }}>{{ $label->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                               
+                            <br>
                             <div class="col-lg-12">
                                 <div class="form_group">
                                     <textarea class="form_control" name="extra_info" placeholder="وصف الخدمة المطلوبة"></textarea>
@@ -104,7 +111,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form_group">
-                            <input class="form-control datetime {{ $errors->has('date') ? 'is-invalid' : '' }}"  name="date" id='datetimepicker1'  placeholder=" برجاء اختيار الموعد المتاح لديك">
+                            <input class="form_control datetime {{ $errors->has('date') ? 'is-invalid' : '' }}"  name="date" id='datetimepicker1'  placeholder=" برجاء اختيار الموعد المتاح لديك">
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -114,19 +121,6 @@
                             </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="form_group">
-                                <!--<label for="projectinput1"> الموقع  </label>-->
-                <input type="text" id="pac-input"
-                       class="form-control"
-                       placeholder="  " name="address_address">
-
-                @error("address")
-                <span class="text-danger"> {{$message}}</span>
-                @enderror
-                <input type="hidden" name="address_latitude" id="latitude" value="" />
-                <input type="hidden" name="address_longitude" id="longitude" value="" />
-            </div>
-            <div id="map" style="height: 500px;width: 700px;"></div>
                                 </div>
                             <div class="col-lg-12">
                                         <div class="form_group">

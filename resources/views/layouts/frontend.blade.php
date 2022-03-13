@@ -67,8 +67,8 @@
                             <div class="top-left custom-container pt-20">
                                     
                                      <div class="nav-button float-left">
-                                  <!--  <a  href="{{route('frontend.request')}}" class="main-btn"> طلب عرض خدمة   </a>-->
-                                    <a  href="{{route('#')}}" class="main-btn"> طلب عرض خدمة   </a>
+                                   <a  href="{{route('frontend.request')}}" class="main-btn"> طلب عرض خدمة   </a>
+                                <!--    <a  href="#" class="main-btn"> طلب عرض خدمة   </a>-->
                                 </div>
                             
                                 <div class="header-phone float-left pl-20"><i class="icofont-ui-call"></i>{{$setting->phone ?? ''}}</div>
@@ -112,7 +112,7 @@
      <li class="menu-item"><a href="{{route('frontend.crew')}}">الهيكل الوظيفي</a></li>
      <li class="menu-item"><a href="{{route('frontend.certificates')}}">شهادات وإنجازات</a></li>
      <li class="menu-item"><a href="{{route('frontend.job_application')}}">طلب توظيف</a></li>
-     <li class="menu-item"><a href="{{route('#')}}">طلب خدمة</a></li>
+     <li class="menu-item"><a href="#">طلب خدمة</a></li>
      
 
  <li class="menu-item"><a href="{{route('frontend.contact')}}">اتصل بنا</a></li>
@@ -206,7 +206,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-10">
                             <div class="copyright-text text-center">
-                                <p>جميع الحقوق محفوظة © 2022 فجر الجنوب - <span>تصميم وبرمجة تحالف الرؤى</span>.</p>
+                                <p>جميع الحقوق محفوظة © 2022 فجر الجنوب - <a href="https://alliance-sa.com/"><span>تصميم وبرمجة تحالف الرؤى</span></a>.</p>
                             </div>
                         </div>
                     </div>

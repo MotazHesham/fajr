@@ -48,15 +48,19 @@ class SaidAboutUsController extends Controller
         return redirect()->route('admin.said-aboutuses.index');
     }
 
-    public function edit(SaidAboutUs $saidAboutUs)
+    public function edit($id)
     {
         abort_if(Gate::denies('said_about_us_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $saidAboutUs=SaidAboutUs::findOrfail($id);
 
         return view('admin.saidAboutuses.edit', compact('saidAboutUs'));
     }
 
-    public function update(UpdateSaidAboutUsRequest $request, SaidAboutUs $saidAboutUs)
+    public function update(UpdateSaidAboutUsRequest $request, $id)
     {
+
+        $saidAboutUs=SaidAboutUs::findOrfail($id);
         $saidAboutUs->update($request->all());
 
         if ($request->input('photo', false)) {
@@ -73,9 +77,11 @@ class SaidAboutUsController extends Controller
         return redirect()->route('admin.said-aboutuses.index');
     }
 
-    public function show(SaidAboutUs $saidAboutUs)
+    public function show( $id)
     {
         abort_if(Gate::denies('said_about_us_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $saidAboutUs=SaidAboutUs::findOrfail($id);
 
         return view('admin.saidAboutuses.show', compact('saidAboutUs'));
     }

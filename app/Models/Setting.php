@@ -64,12 +64,26 @@ class Setting extends Model implements HasMedia
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
         $this->addMediaConversion('preview2')->fit('crop', 523, 675);
+        $this->addMediaConversion('preview3')->fit('crop', 470, 518);
+        $this->addMediaConversion('about')->fit('crop', 671, 611);
+        $this->addMediaConversion('slider')->fit('crop', 1920, 500);
     }
 
     public function getChairmanImgAttribute()
     {
-        return $this->getMedia('chairman_img')->last();
+        $file= $this->getMedia('chairman_img')->last();
+
+      if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+            $file->preview3   = $file->getUrl('preview3');
+           
+        }
+
+        return $file;
     }
+
 
     public function getAboutFajrAttribute()
     {
@@ -79,6 +93,7 @@ class Setting extends Model implements HasMedia
             $file->thumbnail = $file->getUrl('thumb');
             $file->preview   = $file->getUrl('preview');
             $file->preview2   = $file->getUrl('preview2');
+            $file->about   = $file->getUrl('about');
         }
 
         return $file;
@@ -91,6 +106,7 @@ class Setting extends Model implements HasMedia
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
             $file->preview   = $file->getUrl('preview');
+            $file->slider   = $file->getUrl('slider');
         }
 
         return $file;

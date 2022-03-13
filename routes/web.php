@@ -118,7 +118,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('said-aboutuses/ckmedia', 'SaidAboutUsController@storeCKEditorImages')->name('said-aboutuses.storeCKEditorImages');
     Route::resource('said-aboutuses', 'SaidAboutUsController');
 
-    
+
     // Fa Qs
     Route::delete('fa-qs/destroy', 'FaQsController@massDestroy')->name('fa-qs.massDestroy');
     Route::post('fa-qs/media', 'FaQsController@storeMedia')->name('fa-qs.storeMedia');

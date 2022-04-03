@@ -40,7 +40,7 @@ class Certificate extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
-        $this->addMediaConversion('preview2')->fit('crop', 370, 165);
+        $this->addMediaConversion('preview2')->fit('crop', 350, 197);
     }
 
     public function getDateAttribute($value)

@@ -47,7 +47,11 @@
         <div class="row products-grid">
             @foreach($projects as $project)
         @php
-               $id=\App\Models\Service::where('name',$project->type)->first()->id;
+               $type=\App\Models\Service::where('name',$project->type)->first();
+               if($type!=null)
+               $id=$type->id;
+               else
+               $id="";
             @endphp
     
             <div class="col-lg-3 col-md-6 col-sm-12 {{$id }}">

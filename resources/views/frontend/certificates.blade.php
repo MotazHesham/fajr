@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="icon">
                                     @if($certificate->photo)
-                                    <a href="{{ $certificate->photo->getUrl('preview2') }}" class="popup-icon img-popup"><i class="icofont-plus"></i></a>
+                                    <a href="{{ $certificate->photo->getUrl() }}" class="popup-icon img-popup"><i class="icofont-plus"></i></a>
                                  @endif
                                 </div>
                             </div>

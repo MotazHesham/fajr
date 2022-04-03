@@ -128,6 +128,7 @@
                     </div>
                 </div>
             </div>
+            <div class="whatup"><a href="https://wa.link/p9p8hy" target="_blank"><i class="fab fa-whatsapp"></i></a> </div>
         </header><!--====== End Header ======-->
         @yield('content')
 
@@ -186,14 +187,13 @@
                                     <h5>للتواصل السريع</h5>
                                     <p><a href="tel:{{ $setting->phone ?? '' }}">{{ $setting->phone ?? '' }}</a></p>
                                 </div>
-                                
-                                
-                                
+                    
                                 <ul class="social-link">
-                                    <li><a href="{{ $setting->facebook ?? '' }}"><i class="icofont-facebook"></i></a></li>
+                                    <li><a href="{{ $setting->instagram ?? '' }}"><i class="fab fa-instagram"></i></a></li>
                                     <li><a href="{{ $setting->twitter ?? '' }}"><i class="icofont-twitter"></i></a></li>
-                                    <li><a href="{{ $setting->pinterest ?? '' }}"><i class="icofont-pinterest"></i></a></li>
-                                    <li><a href="{{ $setting->skype ?? '' }}"><i class="icofont-skype"></i></a></li>
+                                    <li><a href="{{ $setting->snapchat ?? '' }}"><i class="fab fa-snapchat-ghost"></i></a></li>
+                                    <li><a href="{{ $setting->linkedin ?? '' }}"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="{{ $setting->facebook ?? '' }}"><i class="fab fa-facebook-f"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -240,6 +240,8 @@
 
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+        
+        <script src="https://kit.fontawesome.com/e0387e9a75.js"></script>
+        
         @yield('scripts')
     </body>

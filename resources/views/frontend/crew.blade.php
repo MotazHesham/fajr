@@ -39,7 +39,10 @@
             <div class="team-item text-center mb-55">
                 <div class="team-img">
             
+            @if( $crew->photo!=null)
                     <img src="{{ $crew->photo->getUrl('preview2') }}"alt="">
+                    
+                    @endif
                  
                 </div>
                 <div class="team-content">

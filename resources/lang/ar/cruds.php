@@ -528,7 +528,7 @@ return [
             'date'              => 'تاريخ استلامها',
             'date_helper'       => ' ',
             'photo'             => 'صورة الشهادة',
-            'photo_helper'      => '370x165',
+            'photo_helper'      => '1000x562',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
             'updated_at'        => 'Updated at',
